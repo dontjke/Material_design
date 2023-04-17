@@ -10,16 +10,16 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class PictureOfTheDayViewModel(
-    private val liveData: MutableLiveData<AppState>,
+    private val liveDataForViewToObserve: MutableLiveData<AppState> = MutableLiveData(),
     private val repositoryImpl: RepositoryImpl = RepositoryImpl()
 ) : ViewModel() {
 
     fun getLiveData(): MutableLiveData<AppState> {
-        return liveData
+        return liveDataForViewToObserve
     }
 
     fun sendRequest() {
-        liveData.postValue(AppState.Loading)
+        liveDataForViewToObserve.value = AppState.Loading
         repositoryImpl.getPictureOfTheDayApi().getPictureOfTheDay(BuildConfig.NASA_API_KEY)
             .enqueue(callback)
     }
@@ -29,15 +29,22 @@ class PictureOfTheDayViewModel(
             call: Call<PictureOfTheDayResponseData>,
             response: Response<PictureOfTheDayResponseData>
         ) {
-            if (response.isSuccessful) {
-                liveData.postValue(AppState.Success(response.body()!!))
+            if (response.isSuccessful && response.body() != null) { //какая-то проблема
+                liveDataForViewToObserve.value = AppState.Success(response.body()!!)
             } else {
-                liveData.postValue(AppState.Error(throw java.lang.IllegalStateException("что-то пошло не так")))
+                val message = response.message()
+                if (message.isNullOrEmpty()) {
+                    liveDataForViewToObserve.value =
+                        AppState.Error(Throwable("что-то пошло не так"))
+                } else {
+                    liveDataForViewToObserve.value =
+                        AppState.Error(Throwable(message))
+                }
             }
         }
 
         override fun onFailure(call: Call<PictureOfTheDayResponseData>, t: Throwable) {
-            TODO("Not yet implemented")
+            liveDataForViewToObserve.value = AppState.Error(t)
         }
     }
 }
