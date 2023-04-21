@@ -1,5 +1,7 @@
 package com.example.material_design.view
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -47,6 +49,12 @@ class PictureOfTheDayFragment : Fragment() {
         }
         binding.dayBeforeYesterdayChip.setOnClickListener {
             Toast.makeText(requireContext(),R.string.day_before_yesterday,Toast.LENGTH_SHORT).show()
+        }
+
+        binding.textInput.setEndIconOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse("https://ru.wikipedia.org/wiki/${binding.input.text.toString()}")
+            })
         }
     }
 
