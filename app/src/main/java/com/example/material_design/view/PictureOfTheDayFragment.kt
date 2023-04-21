@@ -43,7 +43,7 @@ class PictureOfTheDayFragment : Fragment() {
         when (appState) {
             is AppState.Error -> {
                 binding.loadingLayout.visibility = View.GONE
-                Snackbar.make(binding.root, "Не получилось", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(binding.root, R.string.something_wrong, Snackbar.LENGTH_LONG).show()
             }
             AppState.Loading -> {
                 binding.loadingLayout.visibility = View.VISIBLE
