@@ -7,14 +7,20 @@
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">?attr/isLightTheme</item>
+        <item name="textInputStyle">@style/MyTextInputLayout</item>
     </style>
 
 
     <style name="Theme.Material_design" parent="Base.Theme.Material_design" />
 
     <style name="MyChipStyle" parent="Widget.Material3.Chip.Suggestion">
-        <item name="chipBackgroundColor">@drawable/my_selector</item>
-        
+        <item name="chipBackgroundColor">@drawable/my_selector_chip</item>
     </style>
+    <style name="MyTextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="helperTextTextColor">#9859FF</item>
+        <item name="counterTextColor">@drawable/my_selector_counter</item>
+        <item name="counterOverflowTextColor">?attr/colorError</item>
+    </style>
+
 
 </resources>
