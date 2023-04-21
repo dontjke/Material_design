@@ -67,6 +67,8 @@ class PictureOfTheDayFragment : Fragment() {
                     placeholder(R.drawable.ic_no_photo_vector)
                     crossfade(true)
                 }
+                binding.titleTextView.text = appState.pictureOfTheDayResponseData.title
+
             }
         }
     }
