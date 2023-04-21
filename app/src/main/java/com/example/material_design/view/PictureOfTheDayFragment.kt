@@ -11,6 +11,7 @@ import com.example.material_design.R
 import com.example.material_design.databinding.FragmentPictureBinding
 import com.example.material_design.viewmodel.AppState
 import com.example.material_design.viewmodel.PictureOfTheDayViewModel
+import com.google.android.material.snackbar.Snackbar
 
 
 class PictureOfTheDayFragment : Fragment() {
@@ -22,17 +23,17 @@ class PictureOfTheDayFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentPictureBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    private val viewModel : PictureOfTheDayViewModel by lazy {
+    private val viewModel: PictureOfTheDayViewModel by lazy {
         ViewModelProvider(this)[PictureOfTheDayViewModel::class.java]
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getLiveData().observe(viewLifecycleOwner ) { appState->
+        viewModel.getLiveData().observe(viewLifecycleOwner) { appState ->
             renderData(appState)
         }
         viewModel.sendRequest()
@@ -41,24 +42,28 @@ class PictureOfTheDayFragment : Fragment() {
     private fun renderData(appState: AppState) {
         when (appState) {
             is AppState.Error -> {
-
+                binding.loadingLayout.visibility = View.GONE
+                Snackbar.make(binding.root, "Не получилось", Snackbar.LENGTH_LONG).show()
             }
             AppState.Loading -> {
-
+                binding.loadingLayout.visibility = View.VISIBLE
             }
             is AppState.Success -> {
+                binding.loadingLayout.visibility = View.GONE
                 binding.imageView.load(appState.pictureOfTheDayResponseData.url) {
-                    /*lifecycle(this@PictureOfTheDayFragment)
+                    lifecycle(this@PictureOfTheDayFragment)
                     error(R.drawable.ic_load_error_vector)
                     placeholder(R.drawable.ic_no_photo_vector)
-                    crossfade(true)*/
+                    crossfade(true)
                 }
             }
         }
     }
-companion object{
-    fun newInstance()= PictureOfTheDayFragment()
-}
+
+    companion object {
+        fun newInstance() = PictureOfTheDayFragment()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

@@ -22,6 +22,5 @@ class MainActivity : AppCompatActivity() {
                 .replace(R.id.container, PictureOfTheDayFragment.newInstance())
                 .commit()
         }
-
     }
 }

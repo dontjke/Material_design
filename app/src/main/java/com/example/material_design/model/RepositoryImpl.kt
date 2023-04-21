@@ -1,12 +1,13 @@
 package com.example.material_design.model
 
+import com.example.material_design.utils.BASE_URL
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
 class RepositoryImpl : Repository {
-    private val baseUrl = "https://api.nasa.gov/"
+    private val baseUrl = BASE_URL
 
     private val retrofit by lazy {
         Retrofit.Builder()
@@ -17,5 +18,4 @@ class RepositoryImpl : Repository {
     fun getPictureOfTheDayApi(): PictureOfTheDayAPI {
         return retrofit.create(PictureOfTheDayAPI::class.java)
     }
-
 }

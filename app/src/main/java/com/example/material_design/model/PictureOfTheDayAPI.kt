@@ -8,6 +8,5 @@ import retrofit2.http.Query
 
 interface PictureOfTheDayAPI {
     @GET(RESPONSE_END_POINT)
-    fun getPictureOfTheDay(@Query(KEY_FOR_EXPANDED_USAGE) apiKey:String):Call<PictureOfTheDayResponseData>
-
+    fun getPictureOfTheDay(@Query(KEY_FOR_EXPANDED_USAGE) apiKey: String): Call<PictureOfTheDayResponseData>
 }
