@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
@@ -37,19 +38,29 @@ class PictureOfTheDayFragment : Fragment() {
             renderData(appState)
         }
         viewModel.sendRequest()
+
+        binding.todayChip.setOnClickListener {
+            Toast.makeText(requireContext(),R.string.today,Toast.LENGTH_SHORT).show()
+        }
+        binding.yesterdayChip.setOnClickListener {
+            Toast.makeText(requireContext(),R.string.yesterday,Toast.LENGTH_SHORT).show()
+        }
+        binding.dayBeforeYesterdayChip.setOnClickListener {
+            Toast.makeText(requireContext(),R.string.day_before_yesterday,Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun renderData(appState: AppState) {
         when (appState) {
             is AppState.Error -> {
-                binding.loadingLayout.visibility = View.GONE
+                binding.loadingProgressBar.visibility = View.GONE
                 Snackbar.make(binding.root, R.string.something_wrong, Snackbar.LENGTH_LONG).show()
             }
             AppState.Loading -> {
-                binding.loadingLayout.visibility = View.VISIBLE
+                binding.loadingProgressBar.visibility = View.VISIBLE
             }
             is AppState.Success -> {
-                binding.loadingLayout.visibility = View.GONE
+                binding.loadingProgressBar.visibility = View.GONE
                 binding.imageView.load(appState.pictureOfTheDayResponseData.url) {
                     lifecycle(this@PictureOfTheDayFragment)
                     error(R.drawable.ic_load_error_vector)

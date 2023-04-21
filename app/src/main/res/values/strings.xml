@@ -7,5 +7,9 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="something_wrong">что-то пошло не так</string>
+    <string name="day_before_yesterday">day before yesterday</string>
+    <string name="yesterday">yesterday</string>
+    <string name="today">today</string>
+    <string name="floating_action_button">TODO</string>
 
 </resources>
