@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.material_design.R
 import com.example.material_design.databinding.FragmentPictureBinding
+import com.example.material_design.utils.BASE_URL_WIKI
 import com.example.material_design.viewmodel.AppState
 import com.example.material_design.viewmodel.PictureOfTheDayViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -53,7 +54,7 @@ class PictureOfTheDayFragment : Fragment() {
 
         binding.textInput.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse("https://ru.wikipedia.org/wiki/${binding.input.text.toString()}")
+                data = Uri.parse("$BASE_URL_WIKI${binding.input.text.toString()}")
             })
         }
     }
