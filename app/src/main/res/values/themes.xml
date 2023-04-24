@@ -8,10 +8,15 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">?attr/isLightTheme</item>
         <item name="textInputStyle">@style/MyTextInputLayout</item>
-       <!-- <item name="textAppearanceBody2">@style/MyTextAppearanceBody2</item>
-        <item name="textAppearanceLabelLarge">@style/MyTextAppearanceBody2</item>-->
+       <item name="shapeAppearanceSmallComponent">@style/MyShapeAppearanceSmallComponent</item>
+
     </style>
     
+    <style name="MyShapeAppearanceSmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
     <style name="MyTextAppearanceBody2" parent="TextAppearance.MaterialComponents.Body2">
         <item name="fontFamily">@font/aladin</item>
         <item name="android:fontFamily">@font/aladin</item>
