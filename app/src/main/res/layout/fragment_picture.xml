@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,9 +13,7 @@
         android:id="@+id/chip_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_gravity="center_horizontal"
         app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
@@ -49,9 +47,8 @@
         app:endIconDrawable="@drawable/ic_wikipedia"
         app:endIconMode="custom"
         app:helperText="wiki_helper_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chip_group">
+        app:layout_anchor="@+id/image_view"
+        app:layout_anchorGravity="top|center">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input"
@@ -60,16 +57,17 @@
             android:padding="10dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
+
     <com.example.material_design.utils.MyImageView
         android:id="@+id/image_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="239dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
+        app:layout_anchorGravity="bottom|center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_input" />
-
 
     <ProgressBar
         android:id="@+id/loading_progress_bar"
@@ -84,26 +82,29 @@
         app:layout_constraintTop_toTopOf="@+id/image_view"
         tools:visibility="visible" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floating_action_button"
-        android:layout_width="wrap_content"
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_app_bar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/floating_action_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_view"
-        app:layout_constraintVertical_bias="0.9" />
+        android:layout_gravity="bottom"
+        app:fabAlignmentMode="center"
+        app:navigationIcon="@drawable/ic_hamburger_menu_bottom_bar" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/float_action_button"
+        android:layout_width="wrap_content"
+        app:layout_anchor="@id/bottom_app_bar"
+        android:src="@drawable/baseline_add_24"
+        android:layout_height="wrap_content"
+        android:contentDescription="TODO" />
 
     <TextView
         android:id="@+id/title_text_view"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_view" />
+        app:layout_anchor="@+id/image_view"
+        app:layout_anchorGravity="bottom|center" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

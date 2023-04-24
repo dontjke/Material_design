@@ -37,10 +37,13 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setHasOptionsMenu(true)
         viewModel.getLiveData().observe(viewLifecycleOwner) { appState ->
             renderData(appState)
         }
         viewModel.sendRequest()
+
 
         binding.todayChip.setOnClickListener {
             Toast.makeText(requireContext(),R.string.today,Toast.LENGTH_SHORT).show()
@@ -57,6 +60,8 @@ class PictureOfTheDayFragment : Fragment() {
                 data = Uri.parse("$BASE_URL_WIKI${binding.input.text.toString()}")
             })
         }
+
+
     }
 
     private fun renderData(appState: AppState) {

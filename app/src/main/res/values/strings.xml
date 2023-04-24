@@ -12,5 +12,6 @@
     <string name="today">today</string>
     <string name="floating_action_button">TODO</string>
     <string name="hint">hint</string>
+    <string name="favourite">Favourite</string>
 
 </resources>

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Material_design" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
@@ -8,7 +8,6 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">?attr/isLightTheme</item>
         <item name="textInputStyle">@style/MyTextInputLayout</item>
-
     </style>
 
     <style name="MyShapeAppearanceSmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
@@ -36,6 +35,7 @@
     <style name="Theme.Material_design" parent="Base.Theme.Material_design">
         <item name="myColorMain">#008A5F</item>
         <item name="myColorSecond">#3BF880</item>
+
     </style>
 
     <style name="MyChipStyle" parent="Widget.Material3.Chip.Suggestion">
