@@ -9,7 +9,6 @@
         <item name="android:windowLightStatusBar">?attr/isLightTheme</item>
         <item name="textInputStyle">@style/MyTextInputLayout</item>
 
-
     </style>
 
     <style name="MyShapeAppearanceSmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
