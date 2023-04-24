@@ -5,12 +5,13 @@
         <!-- Disabled -->
         <item android:color="@android:color/transparent" android:state_enabled="false" />
 
+
         <!-- Selected -->
-        <item android:color="#B486FF" android:state_selected="true" />
-        <item android:color="#C099FF" android:state_checked="true" />
+        <item android:color="?attr/myColorMain" android:state_selected="true" />
+        <item android:color="?attr/myColorMain" android:state_checked="true" />
 
         <!-- Not selected -->
-        <item android:color="#81F885" />
+        <item android:color="?myColorSecond" />
 
 
 </selector>

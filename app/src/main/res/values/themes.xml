@@ -10,16 +10,38 @@
         <item name="textInputStyle">@style/MyTextInputLayout</item>
     </style>
 
+    <style name="MyTextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="hintTextColor">?myColorMain</item>
+        <item name="boxStrokeColor" >?myColorMain</item>
+        <item name="helperTextTextColor">?myColorMain</item>
+        <item name="counterTextColor">@drawable/my_selector_counter</item>
+        <item name="counterOverflowTextColor">?attr/colorError</item>
+    </style>
 
-    <style name="Theme.Material_design" parent="Base.Theme.Material_design" />
+    <style name="Theme.Material_design" parent="Base.Theme.Material_design">
+        <item name="myColorMain">#008A5F</item>
+        <item name="myColorSecond">#3BF880</item>
+    </style>
 
     <style name="MyChipStyle" parent="Widget.Material3.Chip.Suggestion">
         <item name="chipBackgroundColor">@drawable/my_selector_chip</item>
     </style>
-    <style name="MyTextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
-        <item name="helperTextTextColor">#9859FF</item>
-        <item name="counterTextColor">@drawable/my_selector_counter</item>
-        <item name="counterOverflowTextColor">?attr/colorError</item>
+
+    <style name="MyRedTheme" parent="Base.Theme.Material_design">
+        <item name="myColorMain">#CA2020</item>
+        <item name="myColorSecond">#F67D7D</item>
+    </style>
+
+    <style name="MyPurpleTheme" parent="Base.Theme.Material_design">
+        <item name="myColorMain">#9254B1</item>
+        <item name="myColorSecond">#E1C6FF</item>
+
+    </style>
+
+    <style name="MyGreenTheme" parent="Base.Theme.Material_design">
+        <item name="myColorMain">#A6DA09</item>
+        <item name="myColorSecond">#CDFF93</item>
+
     </style>
 
 

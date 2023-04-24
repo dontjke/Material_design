@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <attr name="myColor" format="color"/>
+    <attr name="myColorMain" format="color"/>
+    <attr name="myColorSecond" format="color"/>
+
 
 </resources>
