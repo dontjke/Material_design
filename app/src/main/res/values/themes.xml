@@ -8,10 +8,10 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">?attr/isLightTheme</item>
         <item name="textInputStyle">@style/MyTextInputLayout</item>
-       <item name="shapeAppearanceSmallComponent">@style/MyShapeAppearanceSmallComponent</item>
+
 
     </style>
-    
+
     <style name="MyShapeAppearanceSmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
         <item name="cornerFamily">cut</item>
         <item name="cornerSize">50%</item>
@@ -42,6 +42,7 @@
     <style name="MyChipStyle" parent="Widget.Material3.Chip.Suggestion">
         <item name="chipBackgroundColor">@drawable/my_selector_chip</item>
         <item name="android:textAppearance">@style/MyTextAppearanceBody2</item>
+        <item name="shapeAppearanceOverlay">@style/MyShapeAppearanceSmallComponent</item>
     </style>
 
     <style name="MyRedTheme" parent="Base.Theme.Material_design">
