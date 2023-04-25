@@ -12,6 +12,7 @@ import com.example.material_design.MainActivity
 import com.example.material_design.R
 import com.example.material_design.databinding.FragmentPictureBinding
 import com.example.material_design.utils.BASE_URL_WIKI
+import com.example.material_design.view.drawer.BottomNavigationDrawerFragment
 import com.example.material_design.viewmodel.AppState
 import com.example.material_design.viewmodel.PictureOfTheDayViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -75,6 +76,11 @@ class PictureOfTheDayFragment : Fragment() {
             R.id.action_favourite -> {}
             R.id.action_settings -> {
                 //TODO открыть фрагмент настроек
+            }
+            android.R.id.home -> {
+                activity?.let {
+                    BottomNavigationDrawerFragment().show(it.supportFragmentManager,"tag")
+                }
             }
         }
         return super.onOptionsItemSelected(item)
