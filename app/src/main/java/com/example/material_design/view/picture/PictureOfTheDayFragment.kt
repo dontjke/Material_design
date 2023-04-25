@@ -78,7 +78,7 @@ class PictureOfTheDayFragment : Fragment() {
             R.id.action_settings -> {
                 requireActivity().supportFragmentManager
                     .beginTransaction()
-                    .hide(this) //скрываю этот фрагмент
+                    .hide(this)
                     .add(R.id.container,SettingsFragment.newInstance())
                     .addToBackStack("")
                     .commit()

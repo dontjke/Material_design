@@ -9,9 +9,19 @@
         <item name="android:windowLightStatusBar">?attr/isLightTheme</item>
         <item name="textInputStyle">@style/MyTextInputLayout</item>
         <item name="bottomAppBarStyle">@style/MyBottomAppBarStyle</item>
+        <item name="tabStyle">@style/MyTabStyle</item>
+        <item name="floatingActionButtonStyle">@style/MyFloatingActionButtonStyle</item>
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="MyFloatingActionButtonStyle" parent="Widget.Material3.FloatingActionButton.Surface">
+        <item name="backgroundTint">?myColorMain</item>
+        <item name="tint">@color/white</item>
+    </style>
+    <style name="MyTabStyle" parent="Widget.Material3.TabLayout">
+        <item name="tabIndicatorColor">?myColorMain</item>
     </style>
     
     <style name="MyBottomAppBarStyle" parent="Widget.Material3.BottomAppBar">
