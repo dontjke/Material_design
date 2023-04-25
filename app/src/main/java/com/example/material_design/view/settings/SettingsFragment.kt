@@ -1,23 +1,13 @@
 package com.example.material_design.view.settings
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.view.*
-import android.widget.Toast
+import android.view.ContextThemeWrapper
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import coil.load
-import com.example.material_design.MainActivity
 import com.example.material_design.R
-import com.example.material_design.databinding.FragmentPictureBinding
 import com.example.material_design.databinding.FragmentSettingsBinding
-import com.example.material_design.utils.BASE_URL_WIKI
-import com.example.material_design.view.drawer.BottomNavigationDrawerFragment
-import com.example.material_design.viewmodel.AppState
-import com.example.material_design.viewmodel.PictureOfTheDayViewModel
-import com.google.android.material.snackbar.Snackbar
-
 
 class SettingsFragment : Fragment() {
 
@@ -28,9 +18,11 @@ class SettingsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         return binding.root
     }
+
 
 
 
@@ -38,7 +30,22 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+        binding.redChip.setOnClickListener {
+            context?.setTheme(R.style.MyPurpleTheme)
+        }
+        binding.purpleChip.setOnClickListener {
+
+        }
+        binding.greenChip.setOnClickListener {
+
+
+        }
+
+
+
     }
+
+
 
 
 

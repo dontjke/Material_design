@@ -79,13 +79,13 @@ class PictureOfTheDayFragment : Fragment() {
                 requireActivity().supportFragmentManager
                     .beginTransaction()
                     .hide(this)
-                    .add(R.id.container,SettingsFragment.newInstance())
+                    .add(R.id.container, SettingsFragment.newInstance())
                     .addToBackStack("")
                     .commit()
             }
             android.R.id.home -> {
                 activity?.let {
-                    BottomNavigationDrawerFragment().show(it.supportFragmentManager,"tag")
+                    BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
                 }
             }
         }

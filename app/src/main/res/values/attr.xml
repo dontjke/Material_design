@@ -3,6 +3,7 @@
 
     <attr name="myColorMain" format="color"/>
     <attr name="myColorSecond" format="color"/>
+    <attr name="myColorThird" format="color"/>
 
 
 </resources>
