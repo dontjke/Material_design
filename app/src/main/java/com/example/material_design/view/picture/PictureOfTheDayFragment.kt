@@ -1,4 +1,4 @@
-package com.example.material_design.view
+package com.example.material_design.view.picture
 
 import android.content.Intent
 import android.net.Uri

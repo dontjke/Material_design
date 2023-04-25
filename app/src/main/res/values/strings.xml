@@ -13,5 +13,8 @@
     <string name="floating_action_button">TODO</string>
     <string name="hint">hint</string>
     <string name="favourite">Favourite</string>
+    <string name="red">Red</string>
+    <string name="purple">Purple</string>
+    <string name="green">Green</string>
 
 </resources>

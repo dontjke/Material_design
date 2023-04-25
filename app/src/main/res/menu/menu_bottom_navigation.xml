@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="none">
+    <group android:checkableBehavior="none"
+        android:id="@+id/first_group">
     <item
         android:id="@+id/navigation_one"
         android:icon="@drawable/ic_favourite_menu"
@@ -13,7 +14,8 @@
         android:title="@string/action_settings"
          />
     </group>
-    <group android:checkableBehavior="none">
+    <group android:checkableBehavior="none"
+        android:id="@+id/second_group">
         <item
             android:id="@+id/navigation_three"
             android:icon="@drawable/ic_favourite_menu"

@@ -2,10 +2,9 @@ package com.example.material_design
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.WindowCompat
 import com.example.material_design.databinding.ActivityMainBinding
-import com.example.material_design.view.PictureOfTheDayFragment
+import com.example.material_design.view.picture.PictureOfTheDayFragment
 
 class MainActivity : AppCompatActivity() {
 
