@@ -2,14 +2,21 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Material_design" parent="Theme.Material3.DynamicColors.DayNight">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
         <item name="chipStyle">@style/MyChipStyle</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">?attr/isLightTheme</item>
         <item name="textInputStyle">@style/MyTextInputLayout</item>
+        <item name="bottomAppBarStyle">@style/MyBottomAppBarStyle</item>
+
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+    
+    <style name="MyBottomAppBarStyle" parent="Widget.Material3.BottomAppBar">
+        <item name="backgroundTint">?myColorMain</item>
+        <item name="navigationIconTint">?myColorSecond</item>
     </style>
 
     <style name="MyShapeAppearanceSmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
@@ -35,8 +42,8 @@
     </style>
 
     <style name="Theme.Material_design" parent="Base.Theme.Material_design">
-        <item name="myColorMain">#008A5F</item>
-        <item name="myColorSecond">#3BF880</item>
+        <item name="myColorMain">@color/my_color_main</item>
+        <item name="myColorSecond">@color/my_color_second</item>
 
 
     </style>
