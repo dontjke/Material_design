@@ -11,6 +11,11 @@
     <string name="yesterday">yesterday</string>
     <string name="today">today</string>
     <string name="floating_action_button">TODO</string>
-    <string name="hint">hint</string>
+    <string name="hint">Найти в википедии</string>
+    <string name="favourite">Favourite</string>
+    <string name="red">Red</string>
+    <string name="purple">Purple</string>
+    <string name="green">Green</string>
+    <string name="wiki_helper_text">поищите термин в википедии</string>
 
 </resources>
