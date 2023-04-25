@@ -1,6 +1,6 @@
 package com.example.material_design.viewmodel
 
-import android.widget.TableRow
+import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.material_design.BuildConfig
@@ -10,6 +10,8 @@ import com.example.material_design.model.RepositoryImpl
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.*
 
 class PictureOfTheDayViewModel(
     private val liveDataForViewToObserve: MutableLiveData<AppState> = MutableLiveData(),
@@ -20,11 +22,17 @@ class PictureOfTheDayViewModel(
         return liveDataForViewToObserve
     }
 
-    fun sendRequest() {
+
+    @SuppressLint("SimpleDateFormat")
+    fun sendRequestForPicture(date: Date) {
+        val format = SimpleDateFormat("yyyy-MM-dd")
+
         liveDataForViewToObserve.value = AppState.Loading
-        repositoryImpl.getPictureOfTheDayApi().getPictureOfTheDay(BuildConfig.NASA_API_KEY)
+        repositoryImpl.getPictureOfTheDayApi()
+            .getPictureOfTheDayByData(BuildConfig.NASA_API_KEY, format.format(date))
             .enqueue(callback)
     }
+
 
     private val callback = object : Callback<PictureOfTheDayResponseData> {
         override fun onResponse(
