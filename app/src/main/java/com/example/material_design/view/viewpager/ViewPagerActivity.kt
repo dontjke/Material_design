@@ -1,6 +1,7 @@
 package com.example.material_design.view.viewpager
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import com.example.material_design.R
 import com.example.material_design.databinding.ActivityViewPagerBinding
@@ -15,9 +16,19 @@ class ViewPagerActivity : AppCompatActivity() {
         binding.viewPager.adapter = ViewPagerAdapter(supportFragmentManager)
         binding.tabLayout.setupWithViewPager(binding.viewPager)
 
-        binding.tabLayout.getTabAt(EARTH)?.setIcon(R.drawable.ic_earth)
-        binding.tabLayout.getTabAt(MARS)?.setIcon(R.drawable.ic_mars)
-        binding.tabLayout.getTabAt(WEATHER)?.setIcon(R.drawable.ic_system)
+        setCustomTabs()
+    }
+
+    private fun setCustomTabs() {
+        val layoutInflater = LayoutInflater.from(this)
+        with(binding.tabLayout) {
+            getTabAt(EARTH)?.customView =
+                layoutInflater.inflate(R.layout.activity_view_pager_custom_tab_earth, null)
+            getTabAt(MARS)?.customView =
+                layoutInflater.inflate(R.layout.activity_view_pager_custom_tab_mars, null)
+            getTabAt(WEATHER)?.customView =
+                layoutInflater.inflate(R.layout.activity_view_pager_custom_tab_weather, null)
+        }
 
     }
 
