@@ -13,7 +13,7 @@
     android:drawablePadding="10dp"
     android:gravity="center_vertical"
     android:text="@string/earth"
-    android:textColor="?myColorMain"
+    android:textColor="?myColorMain40Alfa"
     android:textSize="20sp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
