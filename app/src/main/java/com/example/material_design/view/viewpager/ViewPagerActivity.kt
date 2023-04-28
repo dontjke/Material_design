@@ -12,6 +12,7 @@ class ViewPagerActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.viewPager.adapter = ViewPagerAdapter(supportFragmentManager)
+        binding.tabLayout.setupWithViewPager(binding.viewPager)
     }
 
     companion object {

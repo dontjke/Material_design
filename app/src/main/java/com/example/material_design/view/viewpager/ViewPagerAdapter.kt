@@ -22,6 +22,15 @@ class ViewPagerAdapter (fragmentManager: FragmentManager) :
     override fun getCount(): Int {
         return fragments.size
     }
+
+    override fun getPageTitle(position: Int): CharSequence? {
+        return when(position){
+            EARTH_FRAGMENT-> "Earth"
+            MARS_FRAGMENT -> "Mars"
+            WEATHER_FRAGMENT -> "Weather"
+            else -> "Earth"
+        }
+    }
     companion object {
         private const val EARTH_FRAGMENT = 0
         private const val MARS_FRAGMENT = 1
