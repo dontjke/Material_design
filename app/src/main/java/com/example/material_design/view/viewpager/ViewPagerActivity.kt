@@ -14,4 +14,9 @@ class ViewPagerActivity : AppCompatActivity() {
         binding.viewPager.adapter = ViewPagerAdapter(supportFragmentManager)
     }
 
+    companion object {
+        private const val EARTH_FRAGMENT = 0
+        private const val MARS_FRAGMENT = 1
+        private const val WEATHER_FRAGMENT = 2
+    }
 }
