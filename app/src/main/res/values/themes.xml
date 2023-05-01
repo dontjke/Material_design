@@ -11,6 +11,7 @@
         <item name="bottomAppBarStyle">@style/MyBottomAppBarStyle</item>
         <item name="tabStyle">@style/MyTabStyle</item>
         <item name="floatingActionButtonStyle">@style/MyFloatingActionButtonStyle</item>
+        <item name="bottomNavigationStyle">@style/MyBottomNavigationView</item>
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -28,6 +29,10 @@
         <item name="myColorSecond">@color/my_color_second</item>
         <item name="myColorThird">@color/my_color_third</item>
 
+    </style>
+
+    <style name="MyBottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="android:background">?myColorThird</item>
     </style>
 
     <style name="MyFloatingActionButtonStyle" parent="Widget.Material3.FloatingActionButton.Surface">
