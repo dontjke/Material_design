@@ -13,6 +13,7 @@ import com.example.material_design.databinding.FragmentPictureBinding
 import com.example.material_design.utils.BASE_URL_WIKI
 import com.example.material_design.view.drawer.BottomNavigationDrawerFragment
 import com.example.material_design.view.settings.SettingsFragment
+import com.example.material_design.view.viewpager.BottomNavigationActivity
 import com.example.material_design.view.viewpager.ViewPagerActivity
 import com.example.material_design.viewmodel.AppState
 import com.example.material_design.viewmodel.PictureOfTheDayViewModel
@@ -81,6 +82,9 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.app_bar_bottom_navigation -> activity?.let { startActivity(Intent(it,
+                BottomNavigationActivity::class.java)) }
+
             R.id.action_favourite -> activity?.let { startActivity(Intent(it, ViewPagerActivity::class.java)) }
 
             R.id.action_settings -> {
@@ -96,6 +100,8 @@ class PictureOfTheDayFragment : Fragment() {
                     BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
                 }
             }
+
+
         }
         return super.onOptionsItemSelected(item)
     }
