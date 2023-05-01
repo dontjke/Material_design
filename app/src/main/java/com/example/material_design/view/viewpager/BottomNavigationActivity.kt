@@ -15,20 +15,41 @@ class BottomNavigationActivity  : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.bottom_view_earth -> {
-                    Toast.makeText(this, "Earth", Toast.LENGTH_SHORT).show()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.bottom_navigation_container, EarthFragment())
+                        .commit()
                     true
                 }
                 R.id.bottom_view_mars -> {
-                    Toast.makeText(this, "Mars", Toast.LENGTH_SHORT).show()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.bottom_navigation_container, MarsFragment())
+                        .commit()
                     true
                 }
                 R.id.bottom_view_weather -> {
-                    Toast.makeText(this, "Weather", Toast.LENGTH_SHORT).show()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.bottom_navigation_container, WeatherFragment())
+                        .commit()
                     true
                 }
                 else -> false
 
             }
         }
+        binding.bottomNavigationView.setOnItemReselectedListener { item ->
+            when (item.itemId) {
+                R.id.bottom_view_earth -> {
+                    //Item tapped
+                }
+                R.id.bottom_view_mars -> {
+                    //Item tapped
+                }
+                R.id.bottom_view_weather -> {
+                    //Item tapped
+                }
+            }
+        }
+        binding.bottomNavigationView.selectedItemId = R.id.bottom_view_mars
+
     }
 }
