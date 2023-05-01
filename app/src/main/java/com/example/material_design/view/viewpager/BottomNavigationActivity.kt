@@ -1,12 +1,11 @@
 package com.example.material_design.view.viewpager
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.material_design.R
 import com.example.material_design.databinding.ActivityBottomNavigationViewBinding
 
-class BottomNavigationActivity  : AppCompatActivity() {
+class BottomNavigationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBottomNavigationViewBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +35,8 @@ class BottomNavigationActivity  : AppCompatActivity() {
 
             }
         }
+        binding.bottomNavigationView.selectedItemId = R.id.bottom_view_mars
+
         binding.bottomNavigationView.setOnItemReselectedListener { item ->
             when (item.itemId) {
                 R.id.bottom_view_earth -> {
@@ -49,7 +50,11 @@ class BottomNavigationActivity  : AppCompatActivity() {
                 }
             }
         }
-        binding.bottomNavigationView.selectedItemId = R.id.bottom_view_mars
+        binding.bottomNavigationView.getOrCreateBadge(R.id.bottom_view_mars)
+        val badge = binding.bottomNavigationView.getOrCreateBadge(R.id.bottom_view_earth)
+        badge.maxCharacterCount = 2
+        badge.number = 999
+
 
     }
 }
