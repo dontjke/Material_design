@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
-import androidx.viewpager.widget.ViewPager
 import com.example.material_design.R
 import com.example.material_design.databinding.ActivityViewPagerBinding
+import com.google.android.material.tabs.TabLayoutMediator
 
 
 class ViewPagerActivity : AppCompatActivity() {
@@ -17,29 +17,42 @@ class ViewPagerActivity : AppCompatActivity() {
         binding = ActivityViewPagerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.viewPager.adapter = ViewPagerAdapter(supportFragmentManager)
-        binding.tabLayout.setupWithViewPager(binding.viewPager)
+        binding.viewPager.adapter = ViewPagerAdapter(this)
+        setTabs()
 
-        setHighlightedTab(EARTH)
-        binding.viewPager.addOnPageChangeListener(object :
-            ViewPager.OnPageChangeListener {
+    }
 
-            override fun onPageSelected(position: Int) {
-                setHighlightedTab(position)
+    private fun setTabs() {
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+            tab.text = when (position) {
+                EARTH -> {
+                    getString(R.string.earth)
+                }
+                MARS -> {
+                    getString(R.string.mars)
+                }
+                WEATHER -> {
+                    getString(R.string.weather)
+                }
+                else -> {
+                    getString(R.string.earth)
+                }
             }
-
-            override fun onPageScrollStateChanged(state: Int) {
-                //Nothing to do
+            tab.icon = when(position){
+                EARTH -> {
+                    ContextCompat.getDrawable(this@ViewPagerActivity, R.drawable.ic_earth)
+                }
+                MARS -> {
+                    ContextCompat.getDrawable(this@ViewPagerActivity, R.drawable.ic_mars)
+                }
+                WEATHER -> {
+                    ContextCompat.getDrawable(this@ViewPagerActivity, R.drawable.ic_system)
+                }
+                else -> {
+                    ContextCompat.getDrawable(this@ViewPagerActivity, R.drawable.ic_earth)
+                }
             }
-
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-                //Nothing to do
-            }
-        })
+        }.attach()
     }
 
     private fun setHighlightedTab(position: Int) {
