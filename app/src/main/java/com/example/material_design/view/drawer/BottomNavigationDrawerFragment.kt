@@ -10,6 +10,7 @@ import com.example.material_design.R
 import com.example.material_design.databinding.BottomNavigationLayoutBinding
 import com.example.material_design.view.scrolling.ScrollingFragment
 import com.example.material_design.view.settings.SettingsFragment
+import com.example.material_design.view.swipecard.SwipeCardViewFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class BottomNavigationDrawerFragment: BottomSheetDialogFragment() {
@@ -39,7 +40,12 @@ class BottomNavigationDrawerFragment: BottomSheetDialogFragment() {
 
                 }
                 R.id.navigation_two -> {
-                    Toast.makeText(context,"2",Toast.LENGTH_SHORT).show()
+                    requireActivity().supportFragmentManager
+                        .beginTransaction()
+                        .hide(this)
+                        .replace(R.id.container, SwipeCardViewFragment.newInstance())
+                        .addToBackStack("")
+                        .commit()
                 }
             }
             true

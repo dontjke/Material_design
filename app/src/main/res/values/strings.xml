@@ -114,5 +114,7 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="scrolling">Scrolling</string>
+    <string name="swipe_this_card">SWIPE THIS CARD</string>
+    <string name="swipeCardView">Swipe CardView</string>
 
 </resources>
