@@ -1,5 +1,7 @@
 package com.example.material_design.view.viewpager
 
+import android.graphics.ColorMatrix
+import android.graphics.ColorMatrixColorFilter
 import android.graphics.RenderEffect
 import android.graphics.Shader
 import android.os.Build
@@ -23,10 +25,16 @@ class EarthFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            val blurEffect = RenderEffect.createBlurEffect(15f, 0f,
-                Shader.TileMode.MIRROR)
-            view.findViewById<FrameLayout>(R.id.container).setRenderEffect(blurEffect)
+            val desaturateEffect = RenderEffect.createColorFilterEffect(
+                ColorMatrixColorFilter(
+                    ColorMatrix().apply {
+                        setSaturation(0f)
+                    }
+                )
+            )
+            view.findViewById<ImageView>(R.id.imageView).setRenderEffect(desaturateEffect)
         }
+
 
     }
 
