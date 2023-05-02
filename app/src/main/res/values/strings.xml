@@ -20,5 +20,8 @@
     <string name="earth">Earth</string>
     <string name="mars">Mars</string>
     <string name="weather">Weather</string>
+    <string name="warehouse">warehouse</string>
+    <string name="hospital">hospital</string>
+    <string name="lorem_ipsum">lorem ipsum</string>
 
 </resources>
