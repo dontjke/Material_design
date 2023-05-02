@@ -17,5 +17,8 @@
     <string name="purple">Purple</string>
     <string name="green">Green</string>
     <string name="wiki_helper_text">поищите термин в википедии</string>
+    <string name="earth">Earth</string>
+    <string name="mars">Mars</string>
+    <string name="weather">Weather</string>
 
 </resources>

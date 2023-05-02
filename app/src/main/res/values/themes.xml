@@ -11,6 +11,7 @@
         <item name="bottomAppBarStyle">@style/MyBottomAppBarStyle</item>
         <item name="tabStyle">@style/MyTabStyle</item>
         <item name="floatingActionButtonStyle">@style/MyFloatingActionButtonStyle</item>
+        <item name="bottomNavigationStyle">@style/MyBottomNavigationView</item>
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -24,9 +25,14 @@
     <!--Main theme-->
     <style name="Theme.Material_design" parent="Base.Theme.Material_design">
         <item name="myColorMain">@color/my_color_main</item>
+        <item name="myColorMain40Alfa">@color/my_color_main_40Alfa</item>
         <item name="myColorSecond">@color/my_color_second</item>
         <item name="myColorThird">@color/my_color_third</item>
 
+    </style>
+
+    <style name="MyBottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="android:background">?myColorThird</item>
     </style>
 
     <style name="MyFloatingActionButtonStyle" parent="Widget.Material3.FloatingActionButton.Surface">
@@ -75,12 +81,14 @@
 
     <style name="MyRedTheme" parent="Base.Theme.Material_design">
         <item name="myColorMain">#CA2020</item>
+        <item name="myColorMain40Alfa">#66CA2020</item>
         <item name="myColorSecond">#F67D7D</item>
         <item name="myColorThird">#FFD4D4</item>
     </style>
 
     <style name="MyPurpleTheme" parent="Base.Theme.Material_design">
         <item name="myColorMain">#9254B1</item>
+        <item name="myColorMain40Alfa">#669254B1</item>
         <item name="myColorSecond">#E1C6FF</item>
         <item name="myColorThird">#F2E6FF</item>
 
@@ -88,6 +96,7 @@
 
     <style name="MyGreenTheme" parent="Base.Theme.Material_design">
         <item name="myColorMain">#A6DA09</item>
+        <item name="myColorMain40Alfa">#66A6DA09</item>
         <item name="myColorSecond">#CDFF93</item>
         <item name="myColorThird">#EDFFD7</item>
 
