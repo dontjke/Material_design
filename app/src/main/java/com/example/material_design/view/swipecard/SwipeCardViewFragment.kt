@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
+import com.example.material_design.R
 import com.example.material_design.databinding.FragmentCardViewBinding
 import com.google.android.material.behavior.SwipeDismissBehavior
 
@@ -32,7 +33,7 @@ class SwipeCardViewFragment : Fragment() {
         swipe.setSwipeDirection(SwipeDismissBehavior.SWIPE_DIRECTION_ANY)
         swipe.listener = object : SwipeDismissBehavior.OnDismissListener {
             override fun onDismiss(view: View?) {
-                Toast.makeText(context, "Card swiped !!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.card_swiped), Toast.LENGTH_SHORT).show()
             }
 
             override fun onDragStateChanged(state: Int) {}

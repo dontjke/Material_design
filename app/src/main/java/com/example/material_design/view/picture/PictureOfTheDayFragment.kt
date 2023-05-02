@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.material_design.MainActivity
 import com.example.material_design.R
-import com.example.material_design.databinding.FragmentPictureBinding
+import com.example.material_design.databinding.FragmentPictureStartBinding
 import com.example.material_design.utils.BASE_URL_WIKI
 import com.example.material_design.view.drawer.BottomNavigationDrawerFragment
 import com.example.material_design.view.settings.SettingsFragment
@@ -23,7 +23,7 @@ import java.util.*
 
 class PictureOfTheDayFragment : Fragment() {
 
-    private var _binding: FragmentPictureBinding? = null
+    private var _binding: FragmentPictureStartBinding? = null
     private val binding get() = _binding!!
 
 
@@ -31,7 +31,7 @@ class PictureOfTheDayFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentPictureBinding.inflate(inflater, container, false)
+        _binding = FragmentPictureStartBinding.inflate(inflater, container, false)
         return binding.root
     }
 
