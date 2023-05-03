@@ -4,10 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
-import androidx.transition.ChangeBounds
-import androidx.transition.Fade
-import androidx.transition.TransitionManager
-import androidx.transition.TransitionSet
+import androidx.transition.*
 import com.example.material_design.databinding.ActivityAnimationBinding
 
 class AnimationActivity : AppCompatActivity() {
@@ -27,9 +24,12 @@ class AnimationActivity : AppCompatActivity() {
         binding.button.setOnClickListener {
 
             val myAutoTransition = TransitionSet()
-            myAutoTransition.ordering = TransitionSet.ORDERING_TOGETHER
-            val fade = Fade()
+            //myAutoTransition.ordering = TransitionSet.ORDERING_TOGETHER
+            myAutoTransition.ordering = TransitionSet.ORDERING_SEQUENTIAL
+            val fade = Slide()
+            fade.duration = 1000L
             val changeBounds = ChangeBounds()
+            changeBounds.duration = 1000L
             myAutoTransition.addTransition(fade)
             myAutoTransition.addTransition(changeBounds)
             TransitionManager.beginDelayedTransition(binding.transitionsContainer,myAutoTransition)
