@@ -5,13 +5,13 @@
         android:id="@+id/first_group">
     <item
         android:id="@+id/navigation_one"
-        android:icon="@drawable/ic_favourite_menu"
-        android:title="@string/favourite"
+        android:icon="@android:drawable/ic_menu_more"
+        android:title="@string/scrolling"
          />
     <item
         android:id="@+id/navigation_two"
         android:icon="@drawable/ic_settings_menu"
-        android:title="@string/action_settings"
+        android:title="@string/swipeCardView"
          />
     </group>
     <group android:checkableBehavior="none"

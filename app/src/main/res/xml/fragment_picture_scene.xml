@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@layout/fragment_picture_start">
+        <Constraint android:id="@+id/wiki_button" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@layout/fragment_picture">
+        <Constraint android:id="@id/wiki_button" />
+    </ConstraintSet>
+
+    <Transition
+
+        app:constraintSetStart="@layout/fragment_picture_start"
+        app:constraintSetEnd="@layout/fragment_picture"
+        app:duration="700">
+        <OnClick app:targetId="@id/wiki_button" />
+
+    </Transition>
+</MotionScene>
