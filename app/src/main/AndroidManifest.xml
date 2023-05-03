@@ -29,6 +29,9 @@
         <activity
             android:name=".view.viewpager.BottomNavigationActivity"
             android:exported="true" />
+        <activity
+            android:name=".view.animation.AnimationActivity"
+            android:exported="true" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

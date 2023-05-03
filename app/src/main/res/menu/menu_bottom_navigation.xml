@@ -4,21 +4,21 @@
     <group android:checkableBehavior="none"
         android:id="@+id/first_group">
     <item
-        android:id="@+id/navigation_one"
+        android:id="@+id/navigation_scrolling"
         android:icon="@android:drawable/ic_menu_more"
         android:title="@string/scrolling"
          />
     <item
-        android:id="@+id/navigation_two"
-        android:icon="@drawable/ic_settings_menu"
+        android:id="@+id/navigation_swipe"
+        android:icon="@android:drawable/ic_media_rew"
         android:title="@string/swipeCardView"
          />
     </group>
     <group android:checkableBehavior="none"
         android:id="@+id/second_group">
         <item
-            android:id="@+id/navigation_three"
-            android:icon="@drawable/ic_favourite_menu"
+            android:id="@+id/navigation_animation"
+            android:icon="@android:drawable/ic_media_play"
             android:title="@string/favourite"
             />
         <item
