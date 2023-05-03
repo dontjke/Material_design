@@ -1,14 +1,14 @@
 package com.example.material_design.view.animation
 
 import android.os.Bundle
-import android.transition.TransitionManager
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
-import com.example.material_design.R
+import androidx.transition.ChangeBounds
+import androidx.transition.Fade
+import androidx.transition.TransitionManager
+import androidx.transition.TransitionSet
 import com.example.material_design.databinding.ActivityAnimationBinding
-import com.example.material_design.databinding.ActivityMainBinding
-import com.example.material_design.view.picture.PictureOfTheDayFragment
 
 class AnimationActivity : AppCompatActivity() {
 
@@ -25,8 +25,15 @@ class AnimationActivity : AppCompatActivity() {
 
 
         binding.button.setOnClickListener {
-            TransitionManager.beginDelayedTransition(binding.transitionsContainer)
-            textIsVisible =! textIsVisible
+
+            val myAutoTransition = TransitionSet()
+            myAutoTransition.ordering = TransitionSet.ORDERING_TOGETHER
+            val fade = Fade()
+            val changeBounds = ChangeBounds()
+            myAutoTransition.addTransition(fade)
+            myAutoTransition.addTransition(changeBounds)
+            TransitionManager.beginDelayedTransition(binding.transitionsContainer,myAutoTransition)
+            textIsVisible = !textIsVisible
             binding.text.visibility = if (textIsVisible) View.VISIBLE else View.GONE
         }
 

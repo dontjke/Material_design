@@ -117,5 +117,6 @@
     <string name="swipe_this_card">SWIPE THIS CARD</string>
     <string name="swipeCardView">Swipe CardView</string>
     <string name="card_swiped">Card swiped !!</string>
+    <string name="animation">animation</string>
 
 </resources>

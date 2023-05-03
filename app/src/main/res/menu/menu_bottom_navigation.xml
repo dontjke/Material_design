@@ -19,7 +19,7 @@
         <item
             android:id="@+id/navigation_animation"
             android:icon="@android:drawable/ic_media_play"
-            android:title="@string/favourite"
+            android:title="@string/animation"
             />
         <item
             android:id="@+id/navigation_four"
