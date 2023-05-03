@@ -1,6 +1,7 @@
 package com.example.material_design.view.animation
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
@@ -26,10 +27,10 @@ class AnimationActivity : AppCompatActivity() {
             val myAutoTransition = TransitionSet()
             //myAutoTransition.ordering = TransitionSet.ORDERING_TOGETHER
             myAutoTransition.ordering = TransitionSet.ORDERING_SEQUENTIAL
-            val fade = Slide()
+            val fade = Slide(Gravity.END)
             fade.duration = 1000L
             val changeBounds = ChangeBounds()
-            changeBounds.duration = 1000L
+            changeBounds.duration = 300L
             myAutoTransition.addTransition(fade)
             myAutoTransition.addTransition(changeBounds)
             TransitionManager.beginDelayedTransition(binding.transitionsContainer,myAutoTransition)
