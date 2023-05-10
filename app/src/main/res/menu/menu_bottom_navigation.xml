@@ -22,9 +22,9 @@
             android:title="@string/animation"
             />
         <item
-            android:id="@+id/navigation_four"
-            android:icon="@drawable/ic_settings_menu"
-            android:title="@string/action_settings"
+            android:id="@+id/navigation_animations_enlarge"
+            android:icon="@drawable/bg_earth"
+            android:title="@string/animations_enlarge"
             />
     </group>
 </menu>
