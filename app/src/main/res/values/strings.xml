@@ -122,5 +122,6 @@
     <string name="animations_enlarge">animations enlarge</string>
     <string name="animations_path_pransitions">animations path pransitions</string>
     <string name="animations_path_transitions">animations path transitions</string>
+    <string name="shuffle">SHUFFLE</string>
 
 </resources>

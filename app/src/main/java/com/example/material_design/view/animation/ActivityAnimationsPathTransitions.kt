@@ -19,7 +19,10 @@ class ActivityAnimationsPathTransitions : AppCompatActivity() {
         setContentView(binding.root)
         binding.button.setOnClickListener {
             val changeBounds = ChangeBounds()
-            changeBounds.setPathMotion(ArcMotion())
+            val arcMotion = ArcMotion()
+            arcMotion.minimumHorizontalAngle = 90f
+            arcMotion.minimumVerticalAngle = 90f
+            changeBounds.setPathMotion(arcMotion)
             changeBounds.duration = 2000
             TransitionManager.beginDelayedTransition(
                 binding.transitionsContainer,

@@ -1,79 +1,46 @@
 package com.example.material_design.view.animation
 
-import android.graphics.Rect
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
+import android.view.Gravity
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowCompat
-import androidx.recyclerview.widget.RecyclerView
-import androidx.transition.*
-import com.example.material_design.R
-import com.example.material_design.databinding.ActivityAnimationBinding
+import androidx.core.view.ViewCompat
+import androidx.transition.ChangeBounds
+import androidx.transition.TransitionManager
+import com.example.material_design.databinding.ActivityAnimationShuffleBinding
 
 
 class AnimationActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityAnimationBinding
-
+    private lateinit var binding: ActivityAnimationShuffleBinding
     override fun onCreate(savedInstanceState: Bundle?) {
-        WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
-
-        binding = ActivityAnimationBinding.inflate(layoutInflater)
+        binding = ActivityAnimationShuffleBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
-        binding.recyclerView.adapter = Adapter()
-    }
-
-    private fun explode(clickedView: View) {
-        val viewRect = Rect()
-        clickedView.getGlobalVisibleRect(viewRect)
-        val explode = Explode()
-        explode.epicenterCallback = object : Transition.EpicenterCallback() {
-            override fun onGetEpicenter(transition: Transition): Rect {
-                return viewRect
-            }
+        val titles: MutableList<String> = ArrayList()
+        for (i in 0..4) {
+            titles.add(String.format("Item %d", i + 1))
         }
-        explode.duration = 2000
-        val fade = Fade()
-        fade.duration = 2000
-        val set = TransitionSet()
-            .addTransition(explode)
-            .addTransition(fade.addTarget(clickedView))
-            .addListener(object : TransitionListenerAdapter() {
-                override fun onTransitionEnd(transition: Transition) {
-                    transition.removeListener(this)
-                    onBackPressed()
-                }
-            })
-        TransitionManager.beginDelayedTransition(binding.recyclerView, set)
-        binding.recyclerView.adapter = null
-    }
-
-    private inner class Adapter : RecyclerView.Adapter<ViewHolder>() {
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            return ViewHolder(
-                LayoutInflater.from(parent.context).inflate(
-                    R.layout.activity_animation_explode_recycle_view_item,
-                    parent,
-                    false
-                ) as View
+        createViews(binding.transitionsContainer, titles)
+        binding.button.setOnClickListener {
+            TransitionManager.beginDelayedTransition(
+                binding.transitionsContainer,
+                ChangeBounds()
             )
-        }
-
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            holder.itemView.setOnClickListener {
-                explode(it)
-            }
-        }
-
-        override fun getItemCount(): Int {
-            return 32
+            titles.shuffle()
+            createViews(binding.transitionsContainer, titles)
         }
     }
 
-    private inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
+    private fun createViews(layout: ViewGroup, titles: List<String>) {
+        layout.removeAllViews()
+        for (title in titles) {
+            val textView = TextView(this)
+            textView.text = title
+            textView.gravity = Gravity.CENTER_HORIZONTAL
+            ViewCompat.setTransitionName(textView, title)
+            layout.addView(textView)
+        }
+    }
 }
