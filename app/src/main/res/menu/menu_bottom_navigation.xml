@@ -26,5 +26,10 @@
             android:icon="@drawable/bg_earth"
             android:title="@string/animations_enlarge"
             />
+        <item
+            android:id="@+id/navigation_animations_path_transitions"
+            android:icon="@drawable/bg_earth"
+            android:title="@string/animations_path_transitions"
+            />
     </group>
 </menu>

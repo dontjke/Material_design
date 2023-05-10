@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.material_design.R
 import com.example.material_design.databinding.BottomNavigationLayoutBinding
+import com.example.material_design.view.animation.ActivityAnimationsPathTransitions
 import com.example.material_design.view.animation.AnimationActivity
 import com.example.material_design.view.animation.AnimationActivityEnlarge
 import com.example.material_design.view.scrolling.ScrollingFragment
@@ -49,6 +50,9 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
                 }
                 R.id.navigation_animations_enlarge -> {
                     activity?.startActivity(Intent(context, AnimationActivityEnlarge::class.java))
+                }
+                R.id.navigation_animations_path_transitions -> {
+                    activity?.startActivity(Intent(context, ActivityAnimationsPathTransitions::class.java))
                 }
             }
             false
