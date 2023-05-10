@@ -24,24 +24,21 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
         _binding = BottomNavigationLayoutBinding.inflate(inflater, container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
+            this.dismissAllowingStateLoss()
             when (menuItem.itemId) {
                 R.id.navigation_scrolling -> {
                     requireActivity().supportFragmentManager
                         .beginTransaction()
-                        .hide(this)
                         .replace(R.id.container, ScrollingFragment.newInstance())
                         .addToBackStack("")
                         .commit()
-
                 }
                 R.id.navigation_swipe -> {
                     requireActivity().supportFragmentManager
                         .beginTransaction()
-                        .hide(this)
                         .replace(R.id.container, SwipeCardViewFragment.newInstance())
                         .addToBackStack("")
                         .commit()
@@ -50,10 +47,9 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
                     activity?.startActivity(Intent(context, AnimationActivity::class.java))
                 }
             }
-            true
+            false
         }
     }
-
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
