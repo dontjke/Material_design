@@ -8,9 +8,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.recyclerview.widget.RecyclerView
-import androidx.transition.Explode
-import androidx.transition.Transition
-import androidx.transition.TransitionManager
+import androidx.transition.*
 import com.example.material_design.R
 import com.example.material_design.databinding.ActivityAnimationBinding
 
@@ -31,8 +29,8 @@ class AnimationActivity : AppCompatActivity() {
     }
 
     private fun explode(clickedView: View) {
-        val viewRect = Rect() //создал пустой прямоугольник
-        clickedView.getGlobalVisibleRect(viewRect) //записываю координаты (слепок)
+        val viewRect = Rect()
+        clickedView.getGlobalVisibleRect(viewRect)
         val explode = Explode()
         explode.epicenterCallback = object : Transition.EpicenterCallback() {
             override fun onGetEpicenter(transition: Transition): Rect {
@@ -40,7 +38,18 @@ class AnimationActivity : AppCompatActivity() {
             }
         }
         explode.duration = 2000
-        TransitionManager.beginDelayedTransition(binding.recyclerView, explode)
+        val fade = Fade()
+        fade.duration = 2000
+        val set = TransitionSet()
+            .addTransition(explode)
+            .addTransition(fade.addTarget(clickedView))
+            .addListener(object : TransitionListenerAdapter() {
+                override fun onTransitionEnd(transition: Transition) {
+                    transition.removeListener(this)
+                    onBackPressed()
+                }
+            })
+        TransitionManager.beginDelayedTransition(binding.recyclerView, set)
         binding.recyclerView.adapter = null
     }
 
