@@ -3,11 +3,13 @@ package com.example.material_design.view.animation
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.material_design.R
-import com.example.material_design.databinding.ActivityAnimationsFabBinding
+import com.example.material_design.databinding.ActivityAnimationsFabScrollBinding
 
 private const val rotation = "rotation"
 private const val translationY = "translationY"
@@ -22,13 +24,18 @@ private const val duration = 500L
 
 class AnimationActivityFAB : AppCompatActivity() {
 
-    private lateinit var binding: ActivityAnimationsFabBinding
+    private lateinit var binding: ActivityAnimationsFabScrollBinding
     private var isExpanded = false
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAnimationsFabBinding.inflate(layoutInflater)
+        binding = ActivityAnimationsFabScrollBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setFAB()
+        binding.scrollView.setOnScrollChangeListener { _, _, _, _, _ ->
+            binding.toolbar.isSelected = binding.scrollView.canScrollVertically(-1)
+        }
+
 
     }
     private fun setFAB() {
