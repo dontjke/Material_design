@@ -123,5 +123,7 @@
     <string name="animations_path_pransitions">animations path pransitions</string>
     <string name="animations_path_transitions">animations path transitions</string>
     <string name="shuffle">SHUFFLE</string>
+    <string name="option_1">Option 1</string>
+    <string name="option_2">Option 2</string>
 
 </resources>
