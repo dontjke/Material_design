@@ -4,15 +4,20 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.transition.ChangeBounds
+import androidx.transition.ChangeImageTransform
+import androidx.transition.TransitionManager
+import androidx.transition.TransitionSet
 import coil.load
 import com.example.material_design.MainActivity
 import com.example.material_design.R
 import com.example.material_design.databinding.FragmentPictureStartBinding
 import com.example.material_design.utils.BASE_URL_WIKI
 import com.example.material_design.view.drawer.BottomNavigationDrawerFragment
-import com.example.material_design.view.settings.SettingsFragment
+import com.example.material_design.view.scrolling.settings.SettingsFragment
 import com.example.material_design.view.viewpager.BottomNavigationActivity
 import com.example.material_design.view.viewpager.ViewPagerActivity
 import com.example.material_design.viewmodel.AppState
@@ -25,6 +30,7 @@ class PictureOfTheDayFragment : Fragment() {
 
     private var _binding: FragmentPictureStartBinding? = null
     private val binding get() = _binding!!
+    private var isExpanded = false
 
 
     override fun onCreateView(
@@ -42,11 +48,27 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getLiveData().observe(viewLifecycleOwner) { appState ->
-            renderData(appState)
+        binding.imageView.setOnClickListener {
+            isExpanded =! isExpanded
+            TransitionManager.beginDelayedTransition(
+                binding.root, TransitionSet()
+                    .addTransition(ChangeBounds())
+                    .addTransition(ChangeImageTransform())
+            )
+            val params: ViewGroup.LayoutParams = binding.imageView.layoutParams
+            params.height =
+                if (isExpanded) ViewGroup.LayoutParams.MATCH_PARENT else
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+            binding.imageView.layoutParams = params
+            binding.imageView.scaleType =
+                if (isExpanded) ImageView.ScaleType.CENTER_CROP else
+                    ImageView.ScaleType.FIT_CENTER
         }
 
 
+        viewModel.getLiveData().observe(viewLifecycleOwner) { appState ->
+            renderData(appState)
+        }
 
         binding.todayChip.setOnClickListener {
             viewModel.sendRequestForPicture(currentDateWithDayOffset(0))
