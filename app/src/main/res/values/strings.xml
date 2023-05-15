@@ -125,5 +125,6 @@
     <string name="shuffle">SHUFFLE</string>
     <string name="option_1">Option 1</string>
     <string name="option_2">Option 2</string>
+    <string name="animations_fab">animations fab</string>
 
 </resources>

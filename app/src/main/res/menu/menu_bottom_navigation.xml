@@ -31,5 +31,10 @@
             android:icon="@android:drawable/stat_notify_sync"
             android:title="@string/animations_path_transitions"
             />
+        <item
+            android:id="@+id/navigation_animations_fab"
+            android:icon="@android:drawable/stat_notify_sync"
+            android:title="@string/animations_fab"
+            />
     </group>
 </menu>
