@@ -14,6 +14,7 @@ class AnimationsActivityBonus : AppCompatActivity() {
 
     private lateinit var binding: ActivityAnimationsBonusStartBinding
     private var show = false
+    private val constraintSet = ConstraintSet()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAnimationsBonusStartBinding.inflate(layoutInflater)
@@ -23,22 +24,19 @@ class AnimationsActivityBonus : AppCompatActivity() {
     }
     private fun showComponents() {
         show = true
-        val constraintSet = ConstraintSet()
         constraintSet.clone(this, R.layout.activity_animations_bonus_end)
-        val transition = ChangeBounds()
-        transition.interpolator = AnticipateOvershootInterpolator(1.0f)
-        transition.duration = 1200
-        TransitionManager.beginDelayedTransition(binding.constraintContainer,
-            transition)
-        constraintSet.applyTo(binding.constraintContainer)
+        animateComponents()
     }
 
     private fun hideComponents() {
         show = false
-        val constraintSet = ConstraintSet()
         constraintSet.clone(this, R.layout.activity_animations_bonus_start)
+        animateComponents()
+    }
+
+    private fun animateComponents(){
         val transition = ChangeBounds()
-        transition.interpolator = AnticipateOvershootInterpolator(1.0f)
+        transition.interpolator = AnticipateOvershootInterpolator(5.0f)
         transition.duration = 1200
         TransitionManager.beginDelayedTransition(binding.constraintContainer,
             transition)

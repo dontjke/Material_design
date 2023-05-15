@@ -7,10 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.material_design.R
 import com.example.material_design.databinding.BottomNavigationLayoutBinding
-import com.example.material_design.view.animation.ActivityAnimationsPathTransitions
-import com.example.material_design.view.animation.AnimationActivity
-import com.example.material_design.view.animation.AnimationActivityEnlarge
-import com.example.material_design.view.animation.AnimationActivityFAB
+import com.example.material_design.view.animation.*
 import com.example.material_design.view.scrolling.ScrollingFragment
 import com.example.material_design.view.swipecard.SwipeCardViewFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -57,6 +54,9 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
                 }
                 R.id.navigation_animations_fab -> {
                     activity?.startActivity(Intent(context, AnimationActivityFAB::class.java))
+                }
+                R.id.navigation_animations_bonus -> {
+                    activity?.startActivity(Intent(context, AnimationsActivityBonus::class.java))
                 }
             }
             false

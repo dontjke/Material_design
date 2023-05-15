@@ -35,6 +35,10 @@
             android:id="@+id/navigation_animations_fab"
             android:icon="@android:drawable/stat_notify_sync"
             android:title="@string/animations_fab"
+            /><item
+            android:id="@+id/navigation_animations_bonus"
+            android:icon="@android:drawable/stat_notify_sync"
+            android:title="@string/animations_bonus"
             />
     </group>
 </menu>
