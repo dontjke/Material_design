@@ -117,5 +117,17 @@
     <string name="swipe_this_card">SWIPE THIS CARD</string>
     <string name="swipeCardView">Swipe CardView</string>
     <string name="card_swiped">Card swiped !!</string>
+    <string name="animation">animation</string>
+    <string name="tap_on_me">TAP ON ME</string>
+    <string name="animations_enlarge">animations enlarge</string>
+    <string name="animations_path_pransitions">animations path pransitions</string>
+    <string name="animations_path_transitions">animations path transitions</string>
+    <string name="shuffle">SHUFFLE</string>
+    <string name="option_1">Option 1</string>
+    <string name="option_2">Option 2</string>
+    <string name="animations_fab">animations fab</string>
+    <string name="description">На фото видно камни и песок в кратере Даниэлсона (диаметр кратера около 67 км), расположенного на юго-востоке области Arabia Terra.</string>
+    <string name="show_description">Показать описание</string>
+    <string name="animations_bonus">animations bonus</string>
 
 </resources>

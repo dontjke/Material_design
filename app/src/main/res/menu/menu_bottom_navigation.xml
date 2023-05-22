@@ -4,27 +4,41 @@
     <group android:checkableBehavior="none"
         android:id="@+id/first_group">
     <item
-        android:id="@+id/navigation_one"
+        android:id="@+id/navigation_scrolling"
         android:icon="@android:drawable/ic_menu_more"
         android:title="@string/scrolling"
          />
     <item
-        android:id="@+id/navigation_two"
-        android:icon="@drawable/ic_settings_menu"
+        android:id="@+id/navigation_swipe"
+        android:icon="@android:drawable/ic_media_rew"
         android:title="@string/swipeCardView"
          />
     </group>
     <group android:checkableBehavior="none"
         android:id="@+id/second_group">
         <item
-            android:id="@+id/navigation_three"
-            android:icon="@drawable/ic_favourite_menu"
-            android:title="@string/favourite"
+            android:id="@+id/navigation_animation"
+            android:icon="@android:drawable/ic_media_play"
+            android:title="@string/animation"
             />
         <item
-            android:id="@+id/navigation_four"
-            android:icon="@drawable/ic_settings_menu"
-            android:title="@string/action_settings"
+            android:id="@+id/navigation_animations_enlarge"
+            android:icon="@drawable/bg_earth"
+            android:title="@string/animations_enlarge"
+            />
+        <item
+            android:id="@+id/navigation_animations_path_transitions"
+            android:icon="@android:drawable/stat_notify_sync"
+            android:title="@string/animations_path_transitions"
+            />
+        <item
+            android:id="@+id/navigation_animations_fab"
+            android:icon="@android:drawable/stat_notify_sync"
+            android:title="@string/animations_fab"
+            /><item
+            android:id="@+id/navigation_animations_bonus"
+            android:icon="@android:drawable/stat_notify_sync"
+            android:title="@string/animations_bonus"
             />
     </group>
 </menu>

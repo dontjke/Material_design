@@ -1,4 +1,4 @@
-package com.example.material_design.view.settings
+package com.example.material_design.view.scrolling.settings
 
 import android.os.Bundle
 import android.view.ContextThemeWrapper
