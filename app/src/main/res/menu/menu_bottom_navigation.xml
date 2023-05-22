@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="none"
-        android:id="@+id/first_group">
-    <item
-        android:id="@+id/navigation_scrolling"
-        android:icon="@android:drawable/ic_menu_more"
-        android:title="@string/scrolling"
-         />
-    <item
-        android:id="@+id/navigation_swipe"
-        android:icon="@android:drawable/ic_media_rew"
-        android:title="@string/swipeCardView"
-         />
+    <group
+        android:id="@+id/first_group"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/navigationRecyclerView"
+            android:icon="@android:drawable/ic_media_rew"
+            android:title="@string/recyclerActivity" />
+        <item
+            android:id="@+id/navigationScrolling"
+            android:icon="@android:drawable/ic_menu_more"
+            android:title="@string/scrolling" />
+        <item
+            android:id="@+id/navigationSwipe"
+            android:icon="@android:drawable/ic_media_rew"
+            android:title="@string/swipeCardView" />
     </group>
-    <group android:checkableBehavior="none"
-        android:id="@+id/second_group">
+    <group
+        android:id="@+id/second_group"
+        android:checkableBehavior="none">
         <item
-            android:id="@+id/navigation_animation"
+            android:id="@+id/navigationAnimation"
             android:icon="@android:drawable/ic_media_play"
-            android:title="@string/animation"
-            />
+            android:title="@string/animation" />
         <item
-            android:id="@+id/navigation_animations_enlarge"
+            android:id="@+id/navigationAnimationsEnlarge"
             android:icon="@drawable/bg_earth"
-            android:title="@string/animations_enlarge"
-            />
+            android:title="@string/animations_enlarge" />
         <item
-            android:id="@+id/navigation_animations_path_transitions"
+            android:id="@+id/navigationAnimationsPathTransitions"
             android:icon="@android:drawable/stat_notify_sync"
-            android:title="@string/animations_path_transitions"
-            />
+            android:title="@string/animations_path_transitions" />
         <item
-            android:id="@+id/navigation_animations_fab"
+            android:id="@+id/navigationAnimationsFab"
             android:icon="@android:drawable/stat_notify_sync"
-            android:title="@string/animations_fab"
-            /><item
-            android:id="@+id/navigation_animations_bonus"
+            android:title="@string/animations_fab" />
+        <item
+            android:id="@+id/navigationAnimationsBonus"
             android:icon="@android:drawable/stat_notify_sync"
-            android:title="@string/animations_bonus"
-            />
+            android:title="@string/animations_bonus" />
     </group>
 </menu>
