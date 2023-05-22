@@ -7,6 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.material_design.R
+import com.example.material_design.view.recycler.Data.Companion.TYPE_EARTH
+import com.example.material_design.view.recycler.Data.Companion.TYPE_MARS
 
 class RecyclerActivityAdapter(
     private var onListItemClickListener: OnListItemClickListener,
@@ -15,15 +17,18 @@ class RecyclerActivityAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return if (viewType == Data.TYPE_EARTH){
-            EarthViewHolder(
-                inflater.inflate(R.layout.activity_recycler_item_earth, parent,
-                    false) as View
-            )
-        }
-        else{
-            MarsViewHolder(
-                inflater.inflate(R.layout.activity_recycler_item_mars, parent,
+        return when (viewType) {
+            TYPE_EARTH -> EarthViewHolder(
+                inflater.inflate(R.layout.activity_recycler_item_earth, parent, false)
+                        as View
+                )
+                TYPE_MARS ->
+                MarsViewHolder(
+                    inflater.inflate(R.layout.activity_recycler_item_mars, parent,
+                        false) as View
+                )
+            else -> HeaderViewHolder(
+                inflater.inflate(R.layout.activity_recycler_item_header, parent,
                     false) as View
             )
         }
@@ -38,13 +43,21 @@ class RecyclerActivityAdapter(
 
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (getItemViewType(position) == Data.TYPE_EARTH) {
-            holder as EarthViewHolder
-            holder.bind(data[position])
-        } else {
-            holder as MarsViewHolder
-            holder.bind(data[position])
+        when (getItemViewType(position)) {
+            TYPE_EARTH -> {
+                holder as EarthViewHolder
+                holder.bind(data[position])
+            }
+            TYPE_MARS -> {
+                holder as MarsViewHolder
+                holder.bind(data[position])
+            }
+            else -> {
+                holder as HeaderViewHolder
+                holder.bind(data[position])
+            }
         }
+
     }
 
 
@@ -64,5 +77,11 @@ class RecyclerActivityAdapter(
                 onListItemClickListener.onItemClick(data) }
         }
     }
+    inner class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        fun bind(data: Data) {
+            itemView.setOnClickListener { onListItemClickListener.onItemClick(data) }
+        }
+    }
+
 
 }

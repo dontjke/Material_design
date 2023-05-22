@@ -28,7 +28,7 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
-            //this.dismissAllowingStateLoss()
+
             when (menuItem.itemId) {
                 R.id.navigationScrolling -> {
                     requireActivity().supportFragmentManager
