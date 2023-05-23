@@ -16,37 +16,25 @@ class RecyclerActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val data = arrayListOf(
-            Data(Data.TYPE_HEADER, "Header"),
-            Data(Data.TYPE_EARTH, "Earth"),
-            Data(Data.TYPE_EARTH, "Earth"),
-            Data(Data.TYPE_EARTH, "Earth"),
-            Data(Data.TYPE_EARTH, "Earth"),
-            Data(Data.TYPE_EARTH, "Earth"),
-            Data(Data.TYPE_EARTH, "Earth"),
             Data(Data.TYPE_MARS, "Mars", ""),
-            Data(Data.TYPE_EARTH, "Earth"),
-            Data(Data.TYPE_EARTH, "Earth"),
-            Data(Data.TYPE_EARTH, "Earth"),
-            Data(Data.TYPE_MARS, "Mars", null)
         )
-
-        binding.recyclerView.adapter = RecyclerActivityAdapter(
+        val adapter = RecyclerActivityAdapter(
             object : OnListItemClickListener {
                 override fun onItemClick(data: Data) {
-                    Toast.makeText(
-                        this@RecyclerActivity, data.someText,
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(this@RecyclerActivity, data.someText,
+                        Toast.LENGTH_SHORT).show()
                 }
             },
             data
         )
+        binding.recyclerView.adapter = adapter
+        binding.recyclerActivityFAB.setOnClickListener { adapter.appendItem() }
+
         binding.recyclerView.addItemDecoration(
             DividerItemDecoration(
                 this,
                 LinearLayoutManager.VERTICAL
             )
         )
-
     }
 }

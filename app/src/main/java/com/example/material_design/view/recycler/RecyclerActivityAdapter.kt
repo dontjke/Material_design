@@ -12,7 +12,7 @@ import com.example.material_design.view.recycler.Data.Companion.TYPE_MARS
 
 class RecyclerActivityAdapter(
     private var onListItemClickListener: OnListItemClickListener,
-    private var data: List<Data>
+    private var data: MutableList<Data>
 ) : RecyclerView.Adapter<BaseViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
@@ -64,11 +64,30 @@ class RecyclerActivityAdapter(
         }
     }
 
+    fun appendItem() {
+        data.add(generateItem())
+        notifyDataSetChanged()
+    }
+    private fun generateItem() = Data(TYPE_MARS, "Mars", "")
     inner class MarsViewHolder(view: View) : BaseViewHolder(view) {
         override fun bind(data: Data) {
             itemView.findViewById<ImageView>(R.id.marsImageView).setOnClickListener {
                 onListItemClickListener.onItemClick(data)
             }
+
+            itemView.findViewById<ImageView>(R.id.addItemImageView).setOnClickListener {
+                addItem() }
+            itemView.findViewById<ImageView>(R.id.removeItemImageView).setOnClickListener{
+                removeItem() }
+        }
+
+        private fun addItem() {
+            data.add(layoutPosition, generateItem())
+            notifyDataSetChanged()
+        }
+        private fun removeItem() {
+            data.removeAt(layoutPosition)
+            notifyDataSetChanged()
         }
     }
 
