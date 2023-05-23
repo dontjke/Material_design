@@ -147,7 +147,7 @@ class RecyclerActivityAdapter(
         }
 
         override fun onItemClear() {
-            itemView.setBackgroundColor(0)
+            itemView.setBackgroundColor(Color.WHITE)
         }
     }
 
