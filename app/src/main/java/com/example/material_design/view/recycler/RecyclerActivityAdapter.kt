@@ -80,7 +80,31 @@ class RecyclerActivityAdapter(
                 addItem() }
             itemView.findViewById<ImageView>(R.id.removeItemImageView).setOnClickListener{
                 removeItem() }
+
+            itemView.findViewById<ImageView>(R.id.moveItemDown).setOnClickListener {
+                moveDown() }
+            itemView.findViewById<ImageView>(R.id.moveItemUp).setOnClickListener {
+                moveUp() }
+
         }
+
+        private fun moveUp() {
+            layoutPosition.takeIf { it > 1 }?.also { currentPosition ->
+                data.removeAt(currentPosition).apply {
+                    data.add(currentPosition - 1, this)
+                }
+                notifyItemMoved(currentPosition, currentPosition - 1)
+            }
+        }
+        private fun moveDown() {
+            layoutPosition.takeIf { it < data.size - 1 }?.also { currentPosition ->
+                data.removeAt(currentPosition).apply {
+                    data.add(currentPosition + 1, this)
+                }
+                notifyItemMoved(currentPosition, currentPosition + 1)
+            }
+        }
+
 
         private fun addItem() {
             data.add(layoutPosition, generateItem())
