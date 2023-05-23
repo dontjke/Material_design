@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.material_design.databinding.ActivityRecyclerBinding
 
@@ -36,5 +37,8 @@ class RecyclerActivity : AppCompatActivity() {
                 LinearLayoutManager.VERTICAL
             )
         )
+        ItemTouchHelper(ItemTouchHelperCallback(adapter))
+            .attachToRecyclerView(binding.recyclerView)
+
     }
 }
