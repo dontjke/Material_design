@@ -1,5 +1,6 @@
 package com.example.material_design.view.recycler
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +14,7 @@ import com.example.material_design.view.recycler.Data.Companion.TYPE_MARS
 class RecyclerActivityAdapter(
     private var onListItemClickListener: OnListItemClickListener,
     private var data: MutableList<Pair<Data, Boolean>>
-) : RecyclerView.Adapter<BaseViewHolder>() {
+) : RecyclerView.Adapter<BaseViewHolder>(), ItemTouchHelperAdapter {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -67,27 +68,33 @@ class RecyclerActivityAdapter(
         notifyItemInserted(itemCount - 1)
 
     }
+
     private fun generateItem() = Pair(Data(TYPE_MARS, "Mars", ""), false)
-    inner class MarsViewHolder(view: View) : BaseViewHolder(view) {
+    inner class MarsViewHolder(view: View) : BaseViewHolder(view), ItemTouchHelperViewHolder {
         override fun bind(data: Pair<Data, Boolean>) {
             itemView.findViewById<ImageView>(R.id.marsImageView).setOnClickListener {
                 onListItemClickListener.onItemClick(data.first)
             }
 
             itemView.findViewById<ImageView>(R.id.addItemImageView).setOnClickListener {
-                addItem() }
-            itemView.findViewById<ImageView>(R.id.removeItemImageView).setOnClickListener{
-                removeItem() }
+                addItem()
+            }
+            itemView.findViewById<ImageView>(R.id.removeItemImageView).setOnClickListener {
+                removeItem()
+            }
 
             itemView.findViewById<ImageView>(R.id.moveItemDown).setOnClickListener {
-                moveDown() }
+                moveDown()
+            }
             itemView.findViewById<ImageView>(R.id.moveItemUp).setOnClickListener {
-                moveUp() }
+                moveUp()
+            }
 
             itemView.findViewById<TextView>(R.id.marsDescriptionTextView).visibility =
                 if (data.second) View.VISIBLE else View.GONE
             itemView.findViewById<TextView>(R.id.marsTextView).setOnClickListener {
-                toggleText() }
+                toggleText()
+            }
         }
 
         private fun toggleText() {
@@ -105,6 +112,7 @@ class RecyclerActivityAdapter(
                 notifyItemMoved(currentPosition, currentPosition - 1)
             }
         }
+
         private fun moveDown() {
             layoutPosition.takeIf { it < data.size - 1 }?.also { currentPosition ->
                 data.removeAt(currentPosition).apply {
@@ -118,9 +126,19 @@ class RecyclerActivityAdapter(
             data.add(layoutPosition, generateItem())
             notifyItemInserted(layoutPosition)
         }
+
         private fun removeItem() {
             data.removeAt(layoutPosition)
             notifyItemRemoved(layoutPosition)
+        }
+
+        override fun onItemSelected() {
+            itemView.setBackgroundColor(Color.LTGRAY)
+
+        }
+
+        override fun onItemClear() {
+            itemView.setBackgroundColor(0)
         }
     }
 
@@ -129,5 +147,20 @@ class RecyclerActivityAdapter(
         override fun bind(data: Pair<Data, Boolean>) {
             itemView.setOnClickListener { onListItemClickListener.onItemClick(data.first) }
         }
+    }
+
+    override fun onItemMove(fromPosition: Int, toPosition: Int) {
+        data.removeAt(fromPosition).apply {
+            data.add(
+                if (toPosition > fromPosition) toPosition - 1 else toPosition,
+                this
+            )
+        }
+        notifyItemMoved(fromPosition, toPosition)
+    }
+
+    override fun onItemDismiss(position: Int) {
+        data.removeAt(position)
+        notifyItemRemoved(position)
     }
 }
