@@ -2,6 +2,7 @@ package com.example.material_design.view.recycler
 
 import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -13,7 +14,8 @@ import com.example.material_design.view.recycler.Data.Companion.TYPE_MARS
 
 class RecyclerActivityAdapter(
     private var onListItemClickListener: OnListItemClickListener,
-    private var data: MutableList<Pair<Data, Boolean>>
+    private var data: MutableList<Pair<Data, Boolean>>,
+    private val dragListener: OnStartDragListener
 ) : RecyclerView.Adapter<BaseViewHolder>(), ItemTouchHelperAdapter {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
@@ -95,6 +97,13 @@ class RecyclerActivityAdapter(
             itemView.findViewById<TextView>(R.id.marsTextView).setOnClickListener {
                 toggleText()
             }
+            itemView.findViewById<ImageView>(R.id.dragHandleImageView).setOnTouchListener { _, event ->
+                if (event.actionMasked == MotionEvent.ACTION_DOWN) {
+                    dragListener.onStartDrag(this)
+                }
+                false
+            }
+
         }
 
         private fun toggleText() {
