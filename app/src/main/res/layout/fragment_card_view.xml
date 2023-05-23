@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:text="@string/swipe_this_card"
             android:textAllCaps="true"
-            android:layout_gravity="bottom|end"/>
+            android:layout_gravity="bottom|end" />
     </androidx.cardview.widget.CardView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

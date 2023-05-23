@@ -1,10 +1,8 @@
 package com.example.material_design.view.recycler
 
-import android.icu.lang.UCharacter.VerticalOrientation
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.material_design.databinding.ActivityRecyclerBinding
@@ -35,13 +33,20 @@ class RecyclerActivity : AppCompatActivity() {
         binding.recyclerView.adapter = RecyclerActivityAdapter(
             object : OnListItemClickListener {
                 override fun onItemClick(data: Data) {
-                    Toast.makeText(this@RecyclerActivity, data.someText,
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@RecyclerActivity, data.someText,
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             },
             data
         )
-        binding.recyclerView.addItemDecoration(DividerItemDecoration(this,LinearLayoutManager.VERTICAL))
+        binding.recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                this,
+                LinearLayoutManager.VERTICAL
+            )
+        )
 
     }
 }
