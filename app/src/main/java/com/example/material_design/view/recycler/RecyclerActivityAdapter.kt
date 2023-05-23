@@ -21,15 +21,19 @@ class RecyclerActivityAdapter(
             TYPE_EARTH -> EarthViewHolder(
                 inflater.inflate(R.layout.activity_recycler_item_earth, parent, false)
                         as View
-                )
-                TYPE_MARS ->
+            )
+            TYPE_MARS ->
                 MarsViewHolder(
-                    inflater.inflate(R.layout.activity_recycler_item_mars, parent,
-                        false) as View
+                    inflater.inflate(
+                        R.layout.activity_recycler_item_mars, parent,
+                        false
+                    ) as View
                 )
             else -> HeaderViewHolder(
-                inflater.inflate(R.layout.activity_recycler_item_header, parent,
-                    false) as View
+                inflater.inflate(
+                    R.layout.activity_recycler_item_header, parent,
+                    false
+                ) as View
             )
         }
     }
@@ -37,6 +41,7 @@ class RecyclerActivityAdapter(
     override fun getItemCount(): Int {
         return data.size
     }
+
     override fun getItemViewType(position: Int): Int {
         return data[position].type
     }
@@ -53,16 +58,20 @@ class RecyclerActivityAdapter(
                 itemView.findViewById<TextView>(R.id.descriptionTextView).text =
                     data.someDescription
                 itemView.findViewById<ImageView>(R.id.wikiImageView).setOnClickListener {
-                    onListItemClickListener.onItemClick(data) }
+                    onListItemClickListener.onItemClick(data)
+                }
             }
         }
     }
+
     inner class MarsViewHolder(view: View) : BaseViewHolder(view) {
         override fun bind(data: Data) {
             itemView.findViewById<ImageView>(R.id.marsImageView).setOnClickListener {
-                onListItemClickListener.onItemClick(data) }
+                onListItemClickListener.onItemClick(data)
+            }
         }
     }
+
     inner class HeaderViewHolder(view: View) : BaseViewHolder(view) {
         override fun bind(data: Data) {
             itemView.setOnClickListener { onListItemClickListener.onItemClick(data) }
