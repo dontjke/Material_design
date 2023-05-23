@@ -12,7 +12,7 @@ import com.example.material_design.view.recycler.Data.Companion.TYPE_MARS
 
 class RecyclerActivityAdapter(
     private var onListItemClickListener: OnListItemClickListener,
-    private var data: MutableList<Data>
+    private var data: MutableList<Pair<Data, Boolean>>
 ) : RecyclerView.Adapter<BaseViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
@@ -43,22 +43,20 @@ class RecyclerActivityAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        return data[position].type
+        return data[position].first.type
     }
-
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         holder.bind(data[position])
     }
 
-
     inner class EarthViewHolder(view: View) : BaseViewHolder(view) {
-        override fun bind(data: Data) {
+        override fun bind(data: Pair<Data, Boolean>) {
             if (layoutPosition != RecyclerView.NO_POSITION) {
                 itemView.findViewById<TextView>(R.id.descriptionTextView).text =
-                    data.someDescription
+                    data.first.someDescription
                 itemView.findViewById<ImageView>(R.id.wikiImageView).setOnClickListener {
-                    onListItemClickListener.onItemClick(data)
+                    onListItemClickListener.onItemClick(data.first)
                 }
             }
         }
@@ -69,11 +67,11 @@ class RecyclerActivityAdapter(
         notifyItemInserted(itemCount - 1)
 
     }
-    private fun generateItem() = Data(TYPE_MARS, "Mars", "")
+    private fun generateItem() = Pair(Data(TYPE_MARS, "Mars", ""), false)
     inner class MarsViewHolder(view: View) : BaseViewHolder(view) {
-        override fun bind(data: Data) {
+        override fun bind(data: Pair<Data, Boolean>) {
             itemView.findViewById<ImageView>(R.id.marsImageView).setOnClickListener {
-                onListItemClickListener.onItemClick(data)
+                onListItemClickListener.onItemClick(data.first)
             }
 
             itemView.findViewById<ImageView>(R.id.addItemImageView).setOnClickListener {
@@ -86,6 +84,17 @@ class RecyclerActivityAdapter(
             itemView.findViewById<ImageView>(R.id.moveItemUp).setOnClickListener {
                 moveUp() }
 
+            itemView.findViewById<TextView>(R.id.marsDescriptionTextView).visibility =
+                if (data.second) View.VISIBLE else View.GONE
+            itemView.findViewById<TextView>(R.id.marsTextView).setOnClickListener {
+                toggleText() }
+        }
+
+        private fun toggleText() {
+            data[layoutPosition] = data[layoutPosition].let {
+                it.first to !it.second
+            }
+            notifyItemChanged(layoutPosition)
         }
 
         private fun moveUp() {
@@ -105,7 +114,6 @@ class RecyclerActivityAdapter(
             }
         }
 
-
         private fun addItem() {
             data.add(layoutPosition, generateItem())
             notifyItemInserted(layoutPosition)
@@ -117,10 +125,9 @@ class RecyclerActivityAdapter(
     }
 
     inner class HeaderViewHolder(view: View) : BaseViewHolder(view) {
-        override fun bind(data: Data) {
-            itemView.setOnClickListener { onListItemClickListener.onItemClick(data) }
+
+        override fun bind(data: Pair<Data, Boolean>) {
+            itemView.setOnClickListener { onListItemClickListener.onItemClick(data.first) }
         }
     }
-
-
 }
