@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/marsImageView"
@@ -22,6 +23,19 @@
         app:layout_constraintBottom_toBottomOf="@+id/marsImageView"
         app:layout_constraintStart_toEndOf="@+id/marsImageView"
         app:layout_constraintTop_toTopOf="@+id/marsImageView" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/marsDescriptionTextView"
+        tools:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/mars_description"
+        android:textColor="#000"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/marsImageView" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/addItemImageView"
@@ -65,6 +79,5 @@
         app:layout_constraintStart_toEndOf="@+id/moveItemUp"
         app:layout_constraintTop_toTopOf="@+id/marsTextView"
         app:srcCompat="@android:drawable/arrow_down_float" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
