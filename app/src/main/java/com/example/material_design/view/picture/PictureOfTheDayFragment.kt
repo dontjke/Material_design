@@ -146,7 +146,12 @@ class PictureOfTheDayFragment : Fragment() {
                     crossfade(true)
                 }
                 binding.titleTextView.text = appState.pictureOfTheDayResponseData.title
-
+                val text = appState.pictureOfTheDayResponseData.explanation
+                if (text.isEmpty()) {
+                    Snackbar.make(binding.root, R.string.explanation_empty, Snackbar.LENGTH_LONG).show()
+                } else {
+                    binding.textView.text = text
+                }
             }
         }
     }
