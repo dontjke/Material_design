@@ -53,6 +53,20 @@ class RecyclerActivityAdapter(
         holder.bind(data[position])
     }
 
+    override fun onBindViewHolder(
+        holder: BaseViewHolder,
+        position: Int,
+        payloads: MutableList<Any>
+    ) {
+        if (payloads.isEmpty())
+            super.onBindViewHolder(holder, position, payloads)
+        else {
+            if (payloads.any { it is Pair<*, *> })
+            holder.itemView.findViewById<TextView>(R.id.marsTextView).text =
+                data[position].first.someText
+        }
+    }
+
     inner class EarthViewHolder(view: View) : BaseViewHolder(view) {
         override fun bind(data: Pair<Data, Boolean>) {
             if (layoutPosition != RecyclerView.NO_POSITION) {
@@ -153,8 +167,12 @@ class RecyclerActivityAdapter(
 
     inner class HeaderViewHolder(view: View) : BaseViewHolder(view) {
 
-        override fun bind(data: Pair<Data, Boolean>) {
-            itemView.setOnClickListener { onListItemClickListener.onItemClick(data.first) }
+        override fun bind(dataItem: Pair<Data, Boolean>) {
+            itemView.setOnClickListener {
+                // onListItemClickListener.onItemClick(data.first)
+                data[1] = Pair(Data(TYPE_MARS, "Jupiter", ""), false)
+                notifyItemChanged(1, Pair(Data(TYPE_MARS, "", ""), false))
+            }
         }
     }
 
