@@ -18,7 +18,7 @@ class RecyclerActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val data = arrayListOf(
-            Pair(Data(Data.TYPE_MARS, "Mars", ""), false),
+            Pair(Data(Data.TYPE_MARS,0, "Mars", ""), false),
         )
         val adapter = RecyclerActivityAdapter(
             object : OnListItemClickListener {

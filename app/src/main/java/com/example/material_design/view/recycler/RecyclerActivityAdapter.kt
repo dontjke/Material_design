@@ -85,7 +85,7 @@ class RecyclerActivityAdapter(
 
     }
 
-    private fun generateItem() = Pair(Data(TYPE_MARS, "Mars", ""), false)
+    private fun generateItem() = Pair(Data(TYPE_MARS, 0,"Mars", ""), false)
     inner class MarsViewHolder(view: View) : BaseViewHolder(view), ItemTouchHelperViewHolder {
         override fun bind(data: Pair<Data, Boolean>) {
             itemView.findViewById<ImageView>(R.id.marsImageView).setOnClickListener {
@@ -170,8 +170,8 @@ class RecyclerActivityAdapter(
         override fun bind(dataItem: Pair<Data, Boolean>) {
             itemView.setOnClickListener {
                 // onListItemClickListener.onItemClick(data.first)
-                data[1] = Pair(Data(TYPE_MARS, "Jupiter", ""), false)
-                notifyItemChanged(1, Pair(Data(TYPE_MARS, "", ""), false))
+                data[1] = Pair(Data(TYPE_MARS,0, "Jupiter", ""), false)
+                notifyItemChanged(1, Pair(Data(TYPE_MARS,0, "", ""), false))
             }
         }
     }
