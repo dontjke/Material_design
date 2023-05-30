@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.example.material_design.R
 import com.example.material_design.databinding.BottomNavigationLayoutBinding
 import com.example.material_design.view.animation.*
+import com.example.material_design.view.recycler.RecyclerActivity
 import com.example.material_design.view.scrolling.ScrollingFragment
 import com.example.material_design.view.swipecard.SwipeCardViewFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -27,38 +28,42 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
-            this.dismissAllowingStateLoss()
+
             when (menuItem.itemId) {
-                R.id.navigation_scrolling -> {
+                R.id.navigationScrolling -> {
                     requireActivity().supportFragmentManager
                         .beginTransaction()
                         .replace(R.id.container, ScrollingFragment.newInstance())
                         .addToBackStack("")
                         .commit()
                 }
-                R.id.navigation_swipe -> {
+                R.id.navigationSwipe -> {
                     requireActivity().supportFragmentManager
                         .beginTransaction()
                         .replace(R.id.container, SwipeCardViewFragment.newInstance())
                         .addToBackStack("")
                         .commit()
                 }
-                R.id.navigation_animation -> {
+                R.id.navigationAnimation -> {
                     activity?.startActivity(Intent(context, AnimationActivity::class.java))
                 }
-                R.id.navigation_animations_enlarge -> {
+                R.id.navigationAnimationsEnlarge -> {
                     activity?.startActivity(Intent(context, AnimationActivityEnlarge::class.java))
                 }
-                R.id.navigation_animations_path_transitions -> {
+                R.id.navigationAnimationsPathTransitions -> {
                     activity?.startActivity(Intent(context, ActivityAnimationsPathTransitions::class.java))
                 }
-                R.id.navigation_animations_fab -> {
+                R.id.navigationAnimationsFab -> {
                     activity?.startActivity(Intent(context, AnimationActivityFAB::class.java))
                 }
-                R.id.navigation_animations_bonus -> {
+                R.id.navigationAnimationsBonus -> {
                     activity?.startActivity(Intent(context, AnimationsActivityBonus::class.java))
                 }
+                R.id.navigationRecyclerView -> {
+                    activity?.startActivity(Intent(context, RecyclerActivity::class.java))
+                }
             }
+            dismiss()
             false
         }
     }

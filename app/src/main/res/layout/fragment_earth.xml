@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/container"
-    >
+    android:id="@+id/container">
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srcCompat="@drawable/bg_earth"
-        />
+        app:srcCompat="@drawable/bg_earth" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginBottom="20dp"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,8 +25,8 @@
             android:layout_marginLeft="7dp"
             android:layout_marginEnd="7dp"
             android:layout_marginRight="7dp"
-            android:src="@drawable/swipe_indicator_active"
-            />
+            android:src="@drawable/swipe_indicator_active" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,8 +34,8 @@
             android:layout_marginLeft="7dp"
             android:layout_marginEnd="7dp"
             android:layout_marginRight="7dp"
-            android:src="@drawable/swipe_indicator_passive"
-            />
+            android:src="@drawable/swipe_indicator_passive" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,7 +43,6 @@
             android:layout_marginLeft="7dp"
             android:layout_marginEnd="7dp"
             android:layout_marginRight="7dp"
-            android:src="@drawable/swipe_indicator_passive"
-            />
+            android:src="@drawable/swipe_indicator_passive" />
     </LinearLayout>
 </FrameLayout>
