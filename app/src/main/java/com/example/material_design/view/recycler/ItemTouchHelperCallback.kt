@@ -45,8 +45,8 @@ class ItemTouchHelperCallback(private val adapter: RecyclerActivityAdapter) :
         Int
     ) {
         if (actionState != ItemTouchHelper.ACTION_STATE_IDLE) {
-            val itemViewHolder = viewHolder as ItemTouchHelperViewHolder
-            itemViewHolder.onItemSelected()
+            val itemViewHolder = viewHolder as? ItemTouchHelperViewHolder
+            itemViewHolder?.onItemSelected()
         }
         super.onSelectedChanged(viewHolder, actionState)
     }
@@ -56,8 +56,8 @@ class ItemTouchHelperCallback(private val adapter: RecyclerActivityAdapter) :
         RecyclerView.ViewHolder
     ) {
         super.clearView(recyclerView, viewHolder)
-        val itemViewHolder = viewHolder as ItemTouchHelperViewHolder
-        itemViewHolder.onItemClear()
+        val itemViewHolder = viewHolder as? ItemTouchHelperViewHolder
+        itemViewHolder?.onItemClear()
     }
 
     override fun onChildDraw(
