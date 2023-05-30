@@ -73,7 +73,15 @@ class RecyclerActivityAdapter(
         }
 }
 
-inner class EarthViewHolder(view: View) : BaseViewHolder(view) {
+    fun setItems(newItems: List<Pair<Data, Boolean>>) {
+        val result = DiffUtil.calculateDiff(DiffUtilCallback(data, newItems))
+        result.dispatchUpdatesTo(this)
+        data.clear()
+        data.addAll(newItems)
+    }
+
+
+    inner class EarthViewHolder(view: View) : BaseViewHolder(view) {
     override fun bind(data: Pair<Data, Boolean>) {
         if (layoutPosition != RecyclerView.NO_POSITION) {
             itemView.findViewById<TextView>(R.id.descriptionTextView).text =
