@@ -1,6 +1,7 @@
 package com.example.material_design.view.picture
 
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.Typeface
 import android.net.Uri
 import android.os.Build
@@ -8,6 +9,7 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.BulletSpan
+import android.text.style.ForegroundColorSpan
 import android.view.*
 import android.widget.ImageView
 import android.widget.MediaController
@@ -58,11 +60,12 @@ class PictureOfTheDayFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         activity?.let {
-            binding.textView.typeface = Typeface.createFromAsset(it.assets, "fonts/AceSansFree-2O2LX.otf")
+            binding.textView.typeface =
+                Typeface.createFromAsset(it.assets, "fonts/AceSansFree-2O2LX.otf")
         }
 
         binding.imageView.setOnClickListener {
-            isExpanded =! isExpanded
+            isExpanded = !isExpanded
             TransitionManager.beginDelayedTransition(
                 binding.root, TransitionSet()
                     .addTransition(ChangeBounds())
@@ -117,10 +120,23 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_bar_bottom_navigation -> activity?.let { startActivity(Intent(it,
-                BottomNavigationActivity::class.java)) }
+            R.id.app_bar_bottom_navigation -> activity?.let {
+                startActivity(
+                    Intent(
+                        it,
+                        BottomNavigationActivity::class.java
+                    )
+                )
+            }
 
-            R.id.action_favourite -> activity?.let { startActivity(Intent(it, ViewPagerActivity::class.java)) }
+            R.id.action_favourite -> activity?.let {
+                startActivity(
+                    Intent(
+                        it,
+                        ViewPagerActivity::class.java
+                    )
+                )
+            }
 
             R.id.action_settings -> {
                 requireActivity().supportFragmentManager
@@ -138,6 +154,7 @@ class PictureOfTheDayFragment : Fragment() {
         }
         return super.onOptionsItemSelected(item)
     }
+
     private fun renderData(appState: AppState) {
         when (appState) {
             is AppState.Error -> {
@@ -149,19 +166,21 @@ class PictureOfTheDayFragment : Fragment() {
             }
             is AppState.Success -> {
                 binding.loadingProgressBar.visibility = View.GONE
-                if (appState.pictureOfTheDayResponseData.mediaType == "image"){
+                if (appState.pictureOfTheDayResponseData.mediaType == "image") {
                     binding.videoView.alpha = 0f
                     binding.imageView.visibility = View.VISIBLE
-                binding.imageView.load(appState.pictureOfTheDayResponseData.url) {
-                    lifecycle(this@PictureOfTheDayFragment)
-                    error(R.drawable.ic_load_error_vector)
-                    placeholder(R.drawable.ic_no_photo_vector)
-                    crossfade(true)}
-                } else if (appState.pictureOfTheDayResponseData.mediaType == "video"){
+                    binding.imageView.load(appState.pictureOfTheDayResponseData.url) {
+                        lifecycle(this@PictureOfTheDayFragment)
+                        error(R.drawable.ic_load_error_vector)
+                        placeholder(R.drawable.ic_no_photo_vector)
+                        crossfade(true)
+                    }
+                } else if (appState.pictureOfTheDayResponseData.mediaType == "video") {
                     binding.videoView.alpha = 1f
                     binding.imageView.visibility = View.GONE
 
-                    var videoUrl = "https://media.geeksforgeeks.org/wp-content/uploads/20201217192146/Screenrecorder-2020-12-17-19-17-36-828.mp4?_=1"
+                    var videoUrl =
+                        "https://media.geeksforgeeks.org/wp-content/uploads/20201217192146/Screenrecorder-2020-12-17-19-17-36-828.mp4?_=1"
 
                     videoView = binding.videoView
                     val uri: Uri = Uri.parse(videoUrl)
@@ -177,18 +196,33 @@ class PictureOfTheDayFragment : Fragment() {
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                     spannable.setSpan(
-                        context?.let { getColor(it,R.color.my_color_main) }
-                            ?.let { BulletSpan(20, it,30) },
-                        0,6,
+                        context?.let { getColor(it, R.color.my_color_main) }
+                            ?.let { BulletSpan(20, it, 30) },
+                        0, 6,
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
                     )
-
+                    spannable.setSpan(
+                        ForegroundColorSpan(Color.GREEN),
+                        0, 8,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+                    spannable.setSpan(
+                        ForegroundColorSpan(Color.CYAN),
+                        8, 16,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+                    spannable.setSpan(
+                        ForegroundColorSpan(Color.RED),
+                        16, spannable.length,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
                 }
 
                 binding.titleTextView.text = spannable
                 val text = appState.pictureOfTheDayResponseData.explanation
                 if (text.isEmpty()) {
-                    Snackbar.make(binding.root, R.string.explanation_empty, Snackbar.LENGTH_LONG).show()
+                    Snackbar.make(binding.root, R.string.explanation_empty, Snackbar.LENGTH_LONG)
+                        .show()
                 } else {
                     binding.textView.text = text
                 }
