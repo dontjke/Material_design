@@ -1,16 +1,18 @@
 package com.example.material_design.view.picture
 
 import android.content.Intent
-import android.content.Intent.getIntent
 import android.graphics.Typeface
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.BulletSpan
 import android.view.*
-import android.webkit.WebChromeClient
-import android.webkit.WebSettings.PluginState
 import android.widget.ImageView
 import android.widget.MediaController
 import android.widget.VideoView
+import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.transition.ChangeBounds
@@ -37,6 +39,7 @@ class PictureOfTheDayFragment : Fragment() {
     private var _binding: FragmentPictureStartBinding? = null
     private val binding get() = _binding!!
     private var isExpanded = false
+    lateinit var videoView: VideoView
 
 
     override fun onCreateView(
@@ -135,8 +138,6 @@ class PictureOfTheDayFragment : Fragment() {
         }
         return super.onOptionsItemSelected(item)
     }
-
-    lateinit var videoView: VideoView
     private fun renderData(appState: AppState) {
         when (appState) {
             is AppState.Error -> {
@@ -171,7 +172,20 @@ class PictureOfTheDayFragment : Fragment() {
                     videoView.setMediaController(mediaController)
                     videoView.start()
                 }
-                binding.titleTextView.text = appState.pictureOfTheDayResponseData.title
+
+                val spannable = SpannableString(appState.pictureOfTheDayResponseData.title)
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    spannable.setSpan(
+                        context?.let { getColor(it,R.color.my_color_main) }
+                            ?.let { BulletSpan(20, it,30) },
+                        0,6,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+
+                }
+
+                binding.titleTextView.text = spannable
                 val text = appState.pictureOfTheDayResponseData.explanation
                 if (text.isEmpty()) {
                     Snackbar.make(binding.root, R.string.explanation_empty, Snackbar.LENGTH_LONG).show()
