@@ -3,6 +3,7 @@ package com.example.material_design.view.picture
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
+import android.graphics.Typeface.BOLD
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -10,6 +11,7 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.BulletSpan
 import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.view.*
 import android.widget.ImageView
 import android.widget.MediaController
@@ -216,6 +218,11 @@ class PictureOfTheDayFragment : Fragment() {
                         16, spannable.length,
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
                     )
+                    spannable.setSpan(
+                    StyleSpan(BOLD),
+                    0, spannable.length,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
                 }
 
                 binding.titleTextView.text = spannable
