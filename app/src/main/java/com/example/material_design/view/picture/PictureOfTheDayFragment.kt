@@ -9,9 +9,7 @@ import android.os.Build
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
-import android.text.style.BulletSpan
-import android.text.style.ForegroundColorSpan
-import android.text.style.StyleSpan
+import android.text.style.*
 import android.view.*
 import android.widget.ImageView
 import android.widget.MediaController
@@ -196,7 +194,7 @@ class PictureOfTheDayFragment : Fragment() {
                 }
 
                 val spannable = SpannableString(appState.pictureOfTheDayResponseData.title)
-                binding.titleTextView.setText(spannable,TextView.BufferType.SPANNABLE)
+                binding.titleTextView.setText(spannable, TextView.BufferType.SPANNABLE)
                 val spannableText = binding.titleTextView.text as Spannable
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
@@ -222,19 +220,28 @@ class PictureOfTheDayFragment : Fragment() {
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
                     )
                     spannableText.setSpan(
-                    StyleSpan(BOLD),
-                    0, spannable.length,
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                        StyleSpan(BOLD),
+                        0, spannable.length,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+
+                    spannableText.setSpan(
+                        BackgroundColorSpan(Color.GRAY),
+                        3, 16,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
 
                 }
 
-                //binding.titleTextView.text = spannable
-                val text = appState.pictureOfTheDayResponseData.explanation
-                if (text.isEmpty()) {
-                    Snackbar.make(binding.root, R.string.explanation_empty, Snackbar.LENGTH_LONG)
-                        .show()
-                } else {
-                    binding.textView.text = text
+                val spannableExplanation = SpannableString(appState.pictureOfTheDayResponseData.explanation)
+                binding.textView.setText(spannableExplanation, TextView.BufferType.SPANNABLE)
+                val spannableTextExplanation = binding.textView.text as Spannable
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    spannableTextExplanation.setSpan(
+                        QuoteSpan(Color.BLUE, 10, 20),
+                        0, spannableTextExplanation.length,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
                 }
             }
         }
