@@ -149,5 +149,6 @@ quisquam est, qui dolorem ipsum, quia dolor sit amet consectetur adipisci[ng] ve
 sed quia non numquam [do] eius modi tempora inci[di]dunt, ut labore et dolore magnam
 aliquam quaerat voluptatem.</string>
     <string name="explanation_empty">Explanation is empty</string>
+    <string name="fab">FAB</string>
 
 </resources>

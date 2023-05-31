@@ -1,6 +1,7 @@
 package com.example.material_design.view.picture
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
@@ -47,6 +48,10 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.let {
+            binding.textView.typeface = Typeface.createFromAsset(it.assets, "Pelicana-PK62P.otf")
+        }
 
         binding.imageView.setOnClickListener {
             isExpanded =! isExpanded
