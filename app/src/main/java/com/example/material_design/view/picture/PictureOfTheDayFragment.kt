@@ -50,7 +50,7 @@ class PictureOfTheDayFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         activity?.let {
-            binding.textView.typeface = Typeface.createFromAsset(it.assets, "Pelicana-PK62P.otf")
+            binding.textView.typeface = Typeface.createFromAsset(it.assets, "fonts/AceSansFree-2O2LX.otf")
         }
 
         binding.imageView.setOnClickListener {
