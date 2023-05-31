@@ -1,11 +1,16 @@
 package com.example.material_design.view.picture
 
 import android.content.Intent
+import android.content.Intent.getIntent
 import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
+import android.webkit.WebChromeClient
+import android.webkit.WebSettings.PluginState
 import android.widget.ImageView
+import android.widget.MediaController
+import android.widget.VideoView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.transition.ChangeBounds
@@ -127,12 +132,11 @@ class PictureOfTheDayFragment : Fragment() {
                     BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
                 }
             }
-
-
         }
         return super.onOptionsItemSelected(item)
     }
 
+    lateinit var videoView: VideoView
     private fun renderData(appState: AppState) {
         when (appState) {
             is AppState.Error -> {
@@ -144,11 +148,28 @@ class PictureOfTheDayFragment : Fragment() {
             }
             is AppState.Success -> {
                 binding.loadingProgressBar.visibility = View.GONE
+                if (appState.pictureOfTheDayResponseData.mediaType == "image"){
+                    binding.videoView.alpha = 0f
+                    binding.imageView.visibility = View.VISIBLE
                 binding.imageView.load(appState.pictureOfTheDayResponseData.url) {
                     lifecycle(this@PictureOfTheDayFragment)
                     error(R.drawable.ic_load_error_vector)
                     placeholder(R.drawable.ic_no_photo_vector)
-                    crossfade(true)
+                    crossfade(true)}
+                } else if (appState.pictureOfTheDayResponseData.mediaType == "video"){
+                    binding.videoView.alpha = 1f
+                    binding.imageView.visibility = View.GONE
+
+                    var videoUrl = "https://media.geeksforgeeks.org/wp-content/uploads/20201217192146/Screenrecorder-2020-12-17-19-17-36-828.mp4?_=1"
+
+                    videoView = binding.videoView
+                    val uri: Uri = Uri.parse(videoUrl)
+                    videoView.setVideoURI(uri)
+                    val mediaController = MediaController(context)
+                    mediaController.setAnchorView(videoView)
+                    mediaController.setMediaPlayer(videoView)
+                    videoView.setMediaController(mediaController)
+                    videoView.start()
                 }
                 binding.titleTextView.text = appState.pictureOfTheDayResponseData.title
                 val text = appState.pictureOfTheDayResponseData.explanation
