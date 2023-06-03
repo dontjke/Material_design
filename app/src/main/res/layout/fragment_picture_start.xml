@@ -17,6 +17,7 @@
             android:layout_height="match_parent"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
+            android:layout_marginBottom="90dp"
             app:layoutDescription="@xml/fragment_picture_scene">
 
 
@@ -95,6 +96,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_input" />
 
+            <VideoView
+                android:id="@+id/videoView"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                app:layout_constraintBottom_toBottomOf="@+id/image_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_input" />
+
+
+
             <ProgressBar
                 android:id="@+id/loading_progress_bar"
                 style="?android:attr/progressBarStyleLarge"
@@ -117,6 +129,15 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/image_view" />
+            <TextView
+                android:id="@+id/text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_text_view"
+                tools:text="@string/cicero"
+                />
 
         </androidx.constraintlayout.motion.widget.MotionLayout>
 
@@ -128,7 +149,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/baseline_add_24"
-        app:layout_anchor="@id/bottom_app_bar" />
+        android:layout_margin="@dimen/fab_margin"
+        app:layout_anchor="@id/bottom_app_bar"
+        app:layout_anchorGravity="center"/>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_app_bar"

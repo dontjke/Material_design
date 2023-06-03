@@ -1,9 +1,12 @@
 package com.example.material_design.view.animation
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.Gravity
 import android.view.ViewGroup
+import android.widget.MediaController
 import android.widget.TextView
+import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.transition.ChangeBounds
