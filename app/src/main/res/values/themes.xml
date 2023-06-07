@@ -28,7 +28,10 @@
         <item name="myColorMain40Alfa">@color/my_color_main_40Alfa</item>
         <item name="myColorSecond">@color/my_color_second</item>
         <item name="myColorThird">@color/my_color_third</item>
+    </style>
 
+    <style name="SplashTheme" parent="Theme.Material_design">
+        <item name="android:windowBackground">@drawable/splash_background</item>
     </style>
 
     <style name="MyBottomNavigationView" parent="Widget.Material3.BottomNavigationView">
