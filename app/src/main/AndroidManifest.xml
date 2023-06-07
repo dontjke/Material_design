@@ -2,7 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <queries>
+        <intent>
+            <action android:name="com.google.android.youtube.api.service.START" />
+        </intent>
+    </queries>
 
     <application
         android:name=".MyApp"
@@ -14,6 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Material_design"
         tools:targetApi="31">
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -29,6 +36,9 @@
             android:exported="true" />
         <activity
             android:name=".view.viewpager.BottomNavigationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.YouTube"
             android:exported="true" />
         <activity
             android:name=".view.animation.AnimationActivity"
@@ -48,6 +58,7 @@
         <activity
             android:name=".view.recycler.RecyclerActivity"
             android:exported="true" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
