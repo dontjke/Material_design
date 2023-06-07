@@ -14,7 +14,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         val progress = findViewById<LinearProgressIndicator>(R.id.progress)
-        val fullTime = 5000f
+        val fullTime = 2000f
         object : CountDownTimer(fullTime.toLong(), 1L) {
             override fun onTick(millisUntilFinished: Long) {
                 val process = ((1 - millisUntilFinished / fullTime) * 100).toInt()
