@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
-
+        setTheme(R.style.Theme_Material_design)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
