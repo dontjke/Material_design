@@ -18,12 +18,12 @@ class YouTube : YouTubeBaseActivity() {
         val youTubePlayerView: YouTubePlayerView = findViewById(R.id.youtubePlayer)
         val listener = object : YouTubePlayer.OnInitializedListener {
             override fun onInitializationSuccess(
-                p0: YouTubePlayer.Provider?,
-                p1: YouTubePlayer?,
-                p2: Boolean
+                provider: YouTubePlayer.Provider?,
+                player: YouTubePlayer?,
+                wasRestored: Boolean
             ) {
-                p1?.loadVideo("qAHMCZBwYo4")
-                p1?.play()
+                player?.loadVideo("qAHMCZBwYo4")
+                player?.play()
             }
 
             override fun onInitializationFailure(
