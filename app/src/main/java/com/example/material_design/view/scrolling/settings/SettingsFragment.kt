@@ -26,7 +26,7 @@ class SettingsFragment : Fragment() {
         return binding.root
     }
 
-    fun show() {
+    private fun show() {
         GuideView.Builder(requireContext())
             .setTitle("Guide Title Text")
             .setContentText("Guide Description Text\n ...Guide Description Text\n ...Guide Description Text")
