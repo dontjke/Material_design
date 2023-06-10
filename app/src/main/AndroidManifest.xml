@@ -2,7 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <queries>
+        <intent>
+            <action android:name="com.google.android.youtube.api.service.START" />
+        </intent>
+    </queries>
 
     <application
         android:name=".MyApp"
@@ -12,12 +18,14 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Material_design"
+        android:theme="@style/SplashTheme"
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Material_design">
+            android:exported="false" />
+        <activity
+            android:name=".view.ux.SplashActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,6 +37,9 @@
             android:exported="true" />
         <activity
             android:name=".view.viewpager.BottomNavigationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.YouTube"
             android:exported="true" />
         <activity
             android:name=".view.animation.AnimationActivity"
@@ -48,6 +59,7 @@
         <activity
             android:name=".view.recycler.RecyclerActivity"
             android:exported="true" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

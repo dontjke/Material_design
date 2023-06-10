@@ -3,12 +3,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="color_gray">#66000000</color>
+    <color name="light_gray">#B3B3B3</color>
 
     <color name="my_color_main">#1623FF</color>
     <color name="my_color_main_40Alfa">#661623FF</color>
     <color name="my_color_second">#5861FF</color>
     <color name="my_color_third">#C9CBFF</color>
-
-
-
 </resources>

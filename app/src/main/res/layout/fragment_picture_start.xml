@@ -96,17 +96,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_input" />
 
-            <VideoView
-                android:id="@+id/videoView"
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                app:layout_constraintBottom_toBottomOf="@+id/image_view"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_input" />
-
-
-
             <ProgressBar
                 android:id="@+id/loading_progress_bar"
                 style="?android:attr/progressBarStyleLarge"

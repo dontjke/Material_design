@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MyBottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="android:background">?myColorThird</item>
+    </style>
+
+    <style name="MyFloatingActionButtonStyle" parent="Widget.Material3.FloatingActionButton.Surface">
+        <item name="backgroundTint">?myColorMain</item>
+        <item name="tint">?myColorThird</item>
+    </style>
+
+    <style name="MyTabStyle" parent="Widget.Material3.TabLayout">
+        <item name="tabIndicatorColor">?myColorMain</item>
+    </style>
+
+    <style name="MyBottomAppBarStyle" parent="Widget.Material3.BottomAppBar">
+        <item name="backgroundTint">?myColorMain</item>
+        <item name="navigationIconTint">?myColorThird</item>
+    </style>
+
+    <style name="MyShapeAppearanceSmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="MyTextAppearanceBody2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/aladin</item>
+        <item name="android:fontFamily">@font/aladin</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:letterSpacing">0.0178571429</item>
+    </style>
+
+    <style name="MyTextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="hintTextColor">?myColorMain</item>
+        <item name="boxStrokeColor">?myColorMain</item>
+        <item name="helperTextTextColor">?myColorMain</item>
+        <item name="counterTextColor">@drawable/my_selector_counter</item>
+        <item name="counterOverflowTextColor">?attr/colorError</item>
+    </style>
+
+
+    <style name="MyChipStyle" parent="Widget.Material3.Chip.Suggestion">
+        <item name="android:textColor">?myColorThird</item>
+        <item name="chipBackgroundColor">@drawable/my_selector_chip</item>
+        <item name="android:textAppearance">@style/MyTextAppearanceBody2</item>
+        <item name="shapeAppearanceOverlay">@style/MyShapeAppearanceSmallComponent</item>
+    </style>
+</resources>

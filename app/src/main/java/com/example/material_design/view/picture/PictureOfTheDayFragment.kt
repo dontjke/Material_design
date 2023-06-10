@@ -1,21 +1,11 @@
 package com.example.material_design.view.picture
 
 import android.content.Intent
-import android.graphics.Color
 import android.graphics.Typeface
-import android.graphics.Typeface.BOLD
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.style.*
 import android.view.*
 import android.widget.ImageView
-import android.widget.MediaController
-import android.widget.TextView
-import android.widget.VideoView
-import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.transition.ChangeBounds
@@ -34,6 +24,10 @@ import com.example.material_design.view.viewpager.ViewPagerActivity
 import com.example.material_design.viewmodel.AppState
 import com.example.material_design.viewmodel.PictureOfTheDayViewModel
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.youtube.player.YouTubeInitializationResult
+import com.google.android.youtube.player.YouTubePlayer
+import com.google.android.youtube.player.YouTubePlayerView
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -42,8 +36,6 @@ class PictureOfTheDayFragment : Fragment() {
     private var _binding: FragmentPictureStartBinding? = null
     private val binding get() = _binding!!
     private var isExpanded = false
-    lateinit var videoView: VideoView
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -156,6 +148,7 @@ class PictureOfTheDayFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
+
     private fun renderData(appState: AppState) {
         when (appState) {
             is AppState.Error -> {
@@ -168,7 +161,7 @@ class PictureOfTheDayFragment : Fragment() {
             is AppState.Success -> {
                 binding.loadingProgressBar.visibility = View.GONE
                 if (appState.pictureOfTheDayResponseData.mediaType == "image") {
-                    binding.videoView.alpha = 0f
+
                     binding.imageView.visibility = View.VISIBLE
                     binding.imageView.load(appState.pictureOfTheDayResponseData.url) {
                         lifecycle(this@PictureOfTheDayFragment)
@@ -176,73 +169,15 @@ class PictureOfTheDayFragment : Fragment() {
                         placeholder(R.drawable.ic_no_photo_vector)
                         crossfade(true)
                     }
+                    binding.titleTextView.text = appState.pictureOfTheDayResponseData.title
+                    binding.textView.text = appState.pictureOfTheDayResponseData.explanation
                 } else if (appState.pictureOfTheDayResponseData.mediaType == "video") {
-                    binding.videoView.alpha = 1f
+
                     binding.imageView.visibility = View.GONE
 
-                    var videoUrl =
-                        "https://media.geeksforgeeks.org/wp-content/uploads/20201217192146/Screenrecorder-2020-12-17-19-17-36-828.mp4?_=1"
-
-                    videoView = binding.videoView
-                    val uri: Uri = Uri.parse(videoUrl)
-                    videoView.setVideoURI(uri)
-                    val mediaController = MediaController(context)
-                    mediaController.setAnchorView(videoView)
-                    mediaController.setMediaPlayer(videoView)
-                    videoView.setMediaController(mediaController)
-                    videoView.start()
                 }
-
-                val spannable = SpannableString(appState.pictureOfTheDayResponseData.title)
-                binding.titleTextView.setText(spannable, TextView.BufferType.SPANNABLE)
-                val spannableText = binding.titleTextView.text as Spannable
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                    spannableText.setSpan(
-                        context?.let { getColor(it, R.color.my_color_main) }
-                            ?.let { BulletSpan(20, it, 30) },
-                        0, 6,
-                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                    )
-                    spannableText.setSpan(
-                        ForegroundColorSpan(Color.GREEN),
-                        0, 8,
-                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                    )
-                    spannableText.setSpan(
-                        ForegroundColorSpan(Color.CYAN),
-                        8, 16,
-                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                    )
-                    spannableText.setSpan(
-                        ForegroundColorSpan(Color.RED),
-                        16, spannable.length,
-                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                    )
-                    spannableText.setSpan(
-                        StyleSpan(BOLD),
-                        0, spannable.length,
-                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                    )
-
-                    spannableText.setSpan(
-                        BackgroundColorSpan(Color.GRAY),
-                        3, 16,
-                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                    )
-
-                }
-
-                val spannableExplanation = SpannableString(appState.pictureOfTheDayResponseData.explanation)
-                binding.textView.setText(spannableExplanation, TextView.BufferType.SPANNABLE)
-                val spannableTextExplanation = binding.textView.text as Spannable
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                    spannableTextExplanation.setSpan(
-                        QuoteSpan(Color.BLUE, 10, 20),
-                        0, spannableTextExplanation.length,
-                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                    )
-                }
+                binding.titleTextView.text = appState.pictureOfTheDayResponseData.title
+                binding.textView.text = appState.pictureOfTheDayResponseData.explanation
             }
         }
     }

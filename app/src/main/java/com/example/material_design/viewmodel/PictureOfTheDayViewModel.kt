@@ -25,12 +25,15 @@ class PictureOfTheDayViewModel(
 
     @SuppressLint("SimpleDateFormat")
     fun sendRequestForPicture(date: Date) {
-        val format = SimpleDateFormat("yyyy-MM-dd")
-
         liveDataForViewToObserve.value = AppState.Loading
         repositoryImpl.getPictureOfTheDayApi()
-            .getPictureOfTheDayByData(BuildConfig.NASA_API_KEY, format.format(date))
+            .getPictureOfTheDayByData(BuildConfig.NASA_API_KEY, testFormatDate(date, "yyyy-MM-dd"))
             .enqueue(callback)
+    }
+
+    fun testFormatDate(date: Date, pattern: String): String {
+        val format = SimpleDateFormat(pattern)
+        return format.format(date)
     }
 
 
